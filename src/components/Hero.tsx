@@ -73,16 +73,10 @@ const Hero: React.FC = () => {
           A curated collection of digital experiences, creative solutions, and innovative designs that showcase the intersection of art and technology.
         </p>
         
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-          <a 
-            href="#contact" 
-            className="curtain-btn px-8 py-4 bg-stone-800 text-white font-light tracking-wide relative overflow-hidden"
-          >
-            GET IN TOUCH
-          </a>
+        <div className="flex justify-center items-center">
           <a 
             href="#projects" 
-            className="curtain-btn curtain-btn-stone group px-8 py-4 border-2 border-stone-800 bg-stone-100 text-stone-800 font-light tracking-wide hover:bg-stone-800 hover:text-white transition-all duration-500 flex items-center justify-center"
+            className="curtain-btn group px-8 py-4 bg-stone-800 text-white font-light tracking-wide hover:bg-stone-100 hover:text-stone-800 border-2 border-stone-800 transition-all duration-500 flex items-center justify-center"
           >
             <span>EXPLORE GALLERY</span>
             <BsArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
