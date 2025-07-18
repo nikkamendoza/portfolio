@@ -1,46 +1,119 @@
-# Getting Started with Create React App
+# Interactive Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive portfolio website built with React, TypeScript, and CSS animations.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 🎯 Interactive Navigation
+- **Hero Section**: Clean introduction with "View More" button
+- **Progressive Disclosure**: Projects section only appears after clicking "View More"
+- **Smooth Scrolling**: Seamless navigation between sections
 
-### `npm start`
+### 🎨 Visual Design & Animations
+- **Parallax Background**: Animated floating elements with different colors
+- **Project Slider**: Auto-rotating featured project showcase with navigation
+- **Hover Effects**: Interactive cards with smooth transitions
+- **Intersection Observer**: Elements animate in as they come into view
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 📱 Responsive Design
+- Mobile-first approach
+- Adaptive layouts for all screen sizes
+- Touch-friendly navigation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 🚀 Project Showcase
+- **Featured Slider**: Large project showcase with auto-rotation
+- **Technology Tags**: Visual indicators of technologies used
+- **Category Labels**: Organized project categorization
+- **Image Galleries**: High-quality project previews
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 19** with TypeScript
+- **CSS Animations** and transitions
+- **React Scroll** for smooth navigation
+- **Intersection Observer API** for scroll animations
+- **Responsive Design** with mobile-first approach
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Start the development server:
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+src/
+├── components/
+│   ├── Hero.tsx          # Landing section with "View More" button
+│   ├── About.tsx         # About section
+│   ├── Projects.tsx      # Interactive project showcase
+│   └── Contact.tsx       # Contact form
+├── App.tsx               # Main app with state management
+└── index.css             # Custom CSS utilities and animations
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Key Features Explained
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Progressive Disclosure
+The portfolio starts with only Hero, About, and Contact sections visible. The Projects section appears dynamically when users click "View More", creating an engaging discovery experience.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Parallax Animations
+Floating background elements with different colors and timing create depth and visual interest without being distracting.
 
-## Learn More
+### Project Showcase
+- **Auto-rotating slider** with 5-second intervals
+- **Manual navigation** with arrow buttons and dot indicators
+- **Technology tags** showing the tech stack for each project
+- **Category labels** for easy project organization
+- **Hover effects** with scale and shadow animations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Smooth Interactions
+- All animations use CSS transitions for performance
+- Intersection Observer triggers animations when elements come into view
+- Smooth scrolling between sections
+- Responsive hover states and interactions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Customization
+
+### Adding Projects
+Edit the `projects` array in `src/components/Projects.tsx`:
+
+```typescript
+const projects = [
+  {
+    title: 'Your Project',
+    description: 'Project description',
+    image: 'image-url',
+    link: 'project-link',
+    technologies: ['React', 'Node.js'],
+    category: 'Web App'
+  }
+];
+```
+
+### Styling
+- Colors and gradients are defined in `src/index.css`
+- Animation timings can be adjusted in the CSS classes
+- Background elements can be modified in the Projects component
+
+## Browser Support
+
+- Modern browsers with CSS Grid and Flexbox support
+- Intersection Observer API support
+- Smooth scrolling support
+
+## Performance
+
+- Optimized images with proper sizing
+- CSS animations for smooth performance
+- Lazy loading of project images
+- Efficient state management with React hooks
