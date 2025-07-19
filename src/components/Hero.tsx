@@ -66,9 +66,6 @@ const Hero: React.FC = () => {
             NIKKA MENDOZA
           </h2>
         </div>
-        
-        <div className="w-24 h-px bg-stone-400 mx-auto mb-8"></div>
-        
         <p className="text-lg md:text-xl text-stone-600 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
           A curated collection of digital experiences, creative solutions, and innovative designs that showcase the intersection of art and technology.
         </p>

@@ -10,11 +10,9 @@ const Contact: React.FC = () => (
 
     <div className="relative z-10 max-w-6xl mx-auto px-6">
       <div className="text-center mb-20">
-        <div className="w-16 h-px bg-stone-400 mx-auto mb-8"></div>
-        <h2 className="text-5xl md:text-6xl font-extralight text-stone-800 tracking-wider mb-6">
+        <h2 className="text-5xl sm:text-4xl md:text-6xl font-extralight tracking-wider mb-6 bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
           CONTACT
         </h2>
-        <div className="w-16 h-px bg-stone-400 mx-auto mb-8"></div>
         <p className="text-xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">
           Let's discuss your next creative project and bring your vision to life
         </p>

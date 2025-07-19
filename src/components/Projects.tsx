@@ -119,14 +119,12 @@ const Projects: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="w-16 h-px bg-stone-400 mx-auto mb-8"></div>
-          <h2 className="text-5xl md:text-6xl font-extralight text-stone-800 tracking-wider mb-6">
-            GALLERY
+        <div className="flex flex-col items-center mb-20">
+          <h2 className="text-5xl sm:text-4xl md:text-6xl font-extralight tracking-wider mb-6 bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            PROJECTS
           </h2>
-          <div className="w-16 h-px bg-stone-400 mx-auto mb-8"></div>
-          <p className="text-xl text-stone-600 max-w-3xl mx-auto font-light leading-relaxed">
-            A curated collection of digital experiences and creative solutions
+          <p className="text-xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed text-center">
+            A collection of creative digital experiences that showcase the intersection of art and technology
           </p>
         </div>
 
@@ -221,7 +219,6 @@ const Projects: React.FC = () => {
 
         {/* Gallery Stats */}
         <div className="mt-32 text-center">
-          <div className="w-16 h-px bg-stone-400 mx-auto mb-12"></div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             <div className="text-stone-800">
               <div className="text-4xl font-extralight mb-2">{projects.length}</div>
