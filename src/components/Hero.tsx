@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { BsArrowRight } from 'react-icons/bs';
 
 const NUM_SQUARES = 10;
 
@@ -74,7 +73,9 @@ const Hero: React.FC = () => {
             className="curtain-btn group px-8 py-4 bg-stone-800 text-white font-light tracking-wide text-sm hover:bg-stone-100 hover:text-stone-800 border-2 border-stone-800 transition-all duration-500 flex items-center justify-center"
           >
             <span>EXPLORE GALLERY</span>
-            <BsArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+            <svg className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+            </svg>
           </a>
         </div>
       </div>
