@@ -50,88 +50,97 @@ interface Project {
   technologies: string[];
   category: string;
   featured: boolean;
+  role: string;
 }
 
 const projects: Project[] = [
   {
-    title: 'Super PathFinder',
-    description: "Super PathFinder is a dynamic and collaborative task management tool designed to bring clarity to complex projects. It allows teams to visualize their workflows, set dependencies, and track progress in real-time. With its intuitive drag-and-drop interface and Gantt chart integration, PathFinder helps you map out the most efficient path to project completion, ensuring deadlines are met and goals are achieved.",
-    image: pathfinderImage,
-    gallery: [path1, path2, path3],
-    link: '#',
-    technologies: ['Vue.js', 'Firebase', 'Vuex', 'Tailwind CSS'],
+    title: 'Ratatutor',
+    description: 'RataTutor is an AI-powered study assistant web app that transforms student notes into flashcards, summaries, and quizzes. It features document processing, user authentication, and responsive design for personalized learning.',
+    image: ratatutorImage,
+    gallery: [rata1, rata2, rata3, rata4, rata5],
+    link: 'https://ratatutor.onrender.com',
+    technologies: ['Django', 'React', 'Tailwind CSS', 'OpenRouter API'],
     category: 'Website',
-    featured: false
-  },
-  {
-    title: 'Honey OS',
-    description: "Honey OS is a beautifully designed, all-in-one productivity suite that brings a touch of sweetness to your daily digital life. It combines a minimalist design with powerful features, including a smart calendar, a focused to-do list, and a note-taking app. Honey OS is engineered to create a seamless and enjoyable user experience, helping you organize your tasks and ideas with elegance and efficiency.",
-    image: honeyImage,
-    gallery: [honey1],
-    link: '#',
-    technologies: ['React Native', 'Redux', 'Chart.js', 'Expo'],
-    category: 'Web App',
-    featured: true
-  },
-  {
-    title: 'Sisiw IDE',
-    description: "Sisiw IDE is a lightweight and beginner-friendly Integrated Development Environment tailored for web developers. 'Sisiw', meaning 'chick' in Filipino, reflects its goal: to nurture new programmers. It offers a clean, distraction-free coding environment with essential features like syntax highlighting, code completion, and a built-in terminal, making it the perfect starting point for those hatching their coding journey.",
-    image: sisiwImage,
-    gallery: [sisiw1],
-    link: '#',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    category: 'Web App',
-    featured: true
-  },
-  {
-    title: 'The Phishermen',
-    description: "The Phishermen is an educational cybersecurity platform designed to teach users how to identify and protect against phishing attacks. Through interactive simulations and real-world examples, users learn to spot malicious emails, fake websites, and other social engineering tactics. Our goal is to arm individuals and organizations with the knowledge to navigate the digital world safely.",
-    image: phishermenImage,
-    gallery: [phisher1, phisher2, phisher3],
-    link: '#',
-    technologies: ['React', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
-    category: 'Website',
-    featured: false
+    featured: true,
+    role: 'UI/UX Designer, Frontend Developer'
   },
   {
     title: 'ExerGuide AR',
-    description: "ExerGuide AR revolutionizes personal fitness by leveraging Augmented Reality to provide interactive workout instructions. Point your device's camera, and our AR instructors will appear in your room, demonstrating exercises with perfect form. The app offers personalized workout plans, real-time feedback, and progress tracking to ensure you exercise safely and effectively.",
+    description: 'ExerGuide AR is a markerless augmented reality fitness app that uses a 3D virtual coach to demonstrate correct exercise form and reduce injury risks. Designed for Android, it supports visual, audio, and text guidance.',
     image: exerguideImage,
     gallery: [ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8],
     link: 'https://github.com/nikkamendoza/ExerGuide',
-    technologies: ['JavaScript', 'OpenWeather API', 'Chart.js', 'CSS3'],
+    technologies: ['Unity', 'Vuforia', 'C#', 'Blender'],
     category: 'Mobile App',
-    featured: false
+    featured: false,
+    role: 'Full Stack Developer'
   },
   {
-    title: 'Ratatutor',
-    description: "Ratatutor is your personal AI-powered culinary companion. Inspired by the idea that anyone can cook, this chatbot guides you through recipes with step-by-step instructions, answers your cooking questions in real-time, and even suggests dishes based on the ingredients you have. Whether you're a novice or a seasoned cook, Ratatutor makes learning new recipes a delightful experience.",
-    image: ratatutorImage,
-    gallery: [rata1, rata2, rata3, rata4, rata5],
-    link: '#',
-    technologies: ['Python', 'TensorFlow', 'Flask', 'WebSocket'],
+    title: 'The Phishermen',
+    description: 'The Phishermen is an educational cybersecurity platform designed to teach users how to identify and protect against phishing attacks. Through interactive simulations and real-world examples, users learn to spot malicious emails, fake websites, and other social engineering tactics.',
+    image: phishermenImage,
+    gallery: [phisher1, phisher2, phisher3],
+    link: 'https://the-phishermen-blog.vercel.app',
+    technologies: ['React', 'JavaScript', 'Tailwind CSS'],
     category: 'Website',
-    featured: true
+    featured: false,
+    role: 'UI/UX Designer, Frontend Developer'
+  },
+  {
+    title: 'Super PathFinder',
+    description: 'A Mario-themed pathfinding visualizer that simulates Dijkstra’s and A* algorithms on a customizable grid. Users can place obstacles and visualize how each algorithm navigates the environment.',
+    image: pathfinderImage,
+    gallery: [path1, path2, path3],
+    link: 'https://indiv-labs.vercel.app',
+    technologies: ['CSS', 'HTML', 'JavaScript'],
+    category: 'Website',
+    featured: false,
+    role: 'UI/UX Designer, Frontend Developer'
   },
   {
     title: 'PennywAIse',
-    description: "PennywAIse is an intelligent personal finance manager that uses AI to help you save money and make smarter financial decisions. It automatically tracks your spending, identifies saving opportunities, and provides personalized budget recommendations. With PennywAIse, you can take control of your finances and build a secure financial future, one smart decision at a time.",
+    description: 'PennywAIse is a budgeting dashboard that helps users manage income and expenses with AI-generated financial insights. It features responsive design and real-time data visualization.',
     image: pennywaiseImage,
     gallery: [penny1, penny2, penny3, penny4, penny5],
-    link: '#',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis'],
+    link: 'https://pennywaise.onrender.com',
+    technologies: ['Django', 'JavaScript', 'Tailwind CSS'],
     category: 'Website',
-    featured: false
+    featured: false,
+    role: 'UI/UX Designer, Frontend Developer'
   },
   {
     title: '2ndlife',
-    description: "2ndlife is an online marketplace dedicated to giving pre-loved items a new home. From vintage fashion to refurbished electronics, our platform connects sellers and buyers who share a passion for sustainability and unique finds. By making it easy to buy and sell second-hand goods, 2ndlife promotes a circular economy and helps reduce waste.",
+    description: '2ndLife is an e-commerce web platform focused on the buying and selling of secondhand items. The design emphasizes usability and simplicity to encourage sustainable consumer behavior.',
     image: secondlifeImage,
     gallery: [second1, second2, second3],
-    link: '#',
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'AWS'],
+    link: 'https://2ndlife-namstech.vercel.app',
+    technologies: ['React', 'Tailwind CSS', 'MongoDB', 'Node.js', 'Express.js'],
     category: 'Website',
-    featured: false
+    featured: false,
+    role: 'UI/UX Designer, Frontend Developer, QA'
+  },
+  {
+    title: 'Honey OS',
+    description: 'Honey OS is a desktop interface concept featuring voice command integration and basic file management utilities like a notepad, with the goal of simplifying everyday computing tasks.',
+    image: honeyImage,
+    gallery: [honey1],
+    link: '#',
+    technologies: ['Java', 'NetBeans'],
+    category: 'Web App',
+    featured: true,
+    role: 'UI/UX Designer, Frontend Developer'
+  },
+  {
+    title: 'Sisiw IDE',
+    description: 'A custom integrated development environment tailored for the Sisiw programming language, complete with run, compile, file I/O features, and syntax highlighting.',
+    image: sisiwImage,
+    gallery: [sisiw1],
+    link: '#',
+    technologies: ['Java', 'NetBeans'],
+    category: 'Web App',
+    featured: true,
+    role: 'UI/UX Designer, Frontend Developer'
   }
 ];
 
@@ -286,6 +295,14 @@ const Projects: React.FC = () => {
                   <h2 className="modal-project-title">{selectedProject.title}</h2>
                   <div className="modal-divider"></div>
                   <p className="modal-project-description">{selectedProject.description}</p>
+                  <div className="modal-role-section">
+                    <span className="modal-role-title">Role</span>
+                    <div className="modal-tech-tags">
+                      {selectedProject.role.split(',').map(role => (
+                        <span key={role.trim()} className="modal-tech-tag">{role.trim()}</span>
+                      ))}
+                    </div>
+                  </div>
                   <h4 className="modal-tech-title">Technologies Used</h4>
                   <div className="modal-tech-tags">
                     {selectedProject.technologies.map(tech => (
@@ -344,16 +361,18 @@ const Projects: React.FC = () => {
                     onClick={() => setCurrentPage(currentPage - 1)}
                     disabled={currentPage === 0}
                     className="modal-nav-button"
+                    aria-label="Previous"
                   >
-                    Previous
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
                   </button>
                   <div className="modal-page-indicator">Page {currentPage + 1} of {totalPages}</div>
                   <button
                     onClick={() => setCurrentPage(currentPage + 1)}
                     disabled={currentPage === totalPages - 1}
                     className="modal-nav-button"
+                    aria-label="Next"
                   >
-                    Next
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
                   </button>
               </div>
             </div>
@@ -362,12 +381,12 @@ const Projects: React.FC = () => {
 
         {previewImageIndex !== null && selectedProject && (
           <div className="image-preview-backdrop" onClick={closeImagePreview}>
-            <button className="image-preview-close" onClick={closeImagePreview}>
+            <button className="image-preview-close" onClick={closeImagePreview} aria-label="Close">
               <svg className="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            <button className="image-preview-nav prev" onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}>
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            <button className="image-preview-nav prev" aria-label="Previous image" onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}>
+              <svg width="2em" height="2em" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             </button>
 
             <div className="image-preview-content" onClick={(e) => e.stopPropagation()}>
@@ -378,8 +397,8 @@ const Projects: React.FC = () => {
               />
             </div>
 
-            <button className="image-preview-nav next" onClick={(e) => { e.stopPropagation(); handleNextImage(); }}>
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            <button className="image-preview-nav next" aria-label="Next image" onClick={(e) => { e.stopPropagation(); handleNextImage(); }}>
+              <svg width="2em" height="2em" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
         )}

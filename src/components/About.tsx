@@ -15,7 +15,7 @@ const About: React.FC = () => (
             <stop offset="100%" stopColor="#9CA3AF" />
           </linearGradient>
         </defs>
-        
+
         {/* Blob 1 - Upper Left Corner (Aesthetic Organic Shape) */}
         <path fill="url(#blob1)" fillOpacity="0.08" d="M-220,100Q-165,45,-110,150Q-55,255,0,110Q55,-35,110,130Q165,295,220,90Q165,-15,110,170Q55,355,0,190Q-55,25,-110,210Q-165,395,-220,150Q-165,5,-220,100Z">
           <animate attributeName="d" dur="8s" repeatCount="indefinite"
@@ -23,7 +23,7 @@ const About: React.FC = () => (
                     M-220,150Q-165,95,-110,200Q-55,305,0,160Q55,15,110,180Q165,345,220,140Q165,30,110,220Q55,405,0,240Q-55,75,-110,260Q-165,445,-220,200Q-165,55,-220,150Z;
                     M-220,100Q-165,45,-110,150Q-55,255,0,110Q55,-35,110,130Q165,295,220,90Q165,-15,110,170Q55,355,0,190Q-55,25,-110,210Q-165,395,-220,150Q-165,5,-220,100Z" />
         </path>
-        
+
         {/* Blob 2 - Lower Right Corner (Aesthetic Flowing Shape) */}
         <path fill="url(#blob2)" fillOpacity="0.12" d="M600,400Q800,300,900,500Q1000,700,800,700Q600,700,500,500Q400,300,600,400Z">
           <animate attributeName="d" dur="10s" repeatCount="indefinite"
@@ -49,16 +49,16 @@ const About: React.FC = () => (
               The Artist Behind the Code
             </h3>
             <p className="about-description text-lg text-stone-600 leading-relaxed font-light">
-              I am a creative technologist who approaches development as an art form. <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent font-semibold">Every line of code</span>, every pixel, and every interaction is carefully crafted to create meaningful digital experiences that resonate with users on both functional and emotional levels.
+              I’m a developer with a strong eye for design and a passion for creating digital experiences that are both functional and visually engaging. I approach every project with intention—writing clean code, designing intuitive interfaces, and ensuring every detail contributes to a smooth user experience.
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-2xl font-light text-stone-800 tracking-wide mb-4">
               Philosophy
             </h3>
             <p className="about-description text-lg text-stone-600 leading-relaxed font-light">
-              I believe that great digital experiences emerge from the perfect balance of <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">technical excellence</span> and <span className="bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent font-semibold">artistic vision</span>. My work reflects this philosophy through clean, elegant code and thoughtful, user-centered design.
+              I believe effective digital products come from the right mix of technical skill and user-centered design. My goal is always to build solutions that not only work well but also feel right to the people using them.
             </p>
           </div>
 
@@ -67,13 +67,13 @@ const About: React.FC = () => (
               Approach
             </h3>
             <p className="about-description text-lg text-stone-600 leading-relaxed font-light">
-              Each project begins with deep research and understanding, followed by iterative design and development. I collaborate closely with clients to ensure every detail aligns with their vision while pushing creative boundaries.
+              I start every project by understanding the problem, the users, and the goals. From there, I follow an iterative design and development process—collaborating closely with clients, testing ideas early, and refining based on feedback to ensure the final product is aligned, usable, and meaningful.
             </p>
           </div>
 
           {/* Signature */}
           <div className="mt-10">
-            <span className="block text-3xl font-signature text-stone-700 tracking-widest">Joie</span>
+            <span className="block text-3xl font-signature text-stone-700 tracking-widest">— Nikka Joie</span>
           </div>
         </div>
 
