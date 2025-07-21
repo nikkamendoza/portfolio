@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
   const bounce = (factor: number, offset: number = 0) => `translateY(${Math.sin((scrollY + offset) * 0.02) * factor}px)`;
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden" style={{ fontFamily: 'Comfortaa, cursive' }}>
       {/* Abstract Animated Squares - Randomly Scattered */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {squares.map((sq, i) => (
@@ -61,11 +61,9 @@ const Hero: React.FC = () => {
       </div>
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto">
-        <div>
-          <h2 className="text-4xl md:text-6xl font-light text-stone-600 tracking-wide mb-6">
-            NIKKA MENDOZA
-          </h2>
-        </div>
+        <h2 className="text-4xl md:text-6xl font-light text-stone-600 tracking-wide mb-6 hero-title" style={{ fontFamily: 'Comfortaa, cursive' }}>
+          NIKKA MENDOZA
+        </h2>
         <p className="text-lg md:text-xl text-stone-600 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
           A curated collection of digital experiences, creative solutions, and innovative designs that showcase the intersection of art and technology.
         </p>
@@ -73,7 +71,7 @@ const Hero: React.FC = () => {
         <div className="flex justify-center items-center">
           <a 
             href="#projects" 
-            className="curtain-btn group px-8 py-4 bg-stone-800 text-white font-light tracking-wide hover:bg-stone-100 hover:text-stone-800 border-2 border-stone-800 transition-all duration-500 flex items-center justify-center"
+            className="curtain-btn group px-8 py-4 bg-stone-800 text-white font-light tracking-wide text-sm hover:bg-stone-100 hover:text-stone-800 border-2 border-stone-800 transition-all duration-500 flex items-center justify-center"
           >
             <span>EXPLORE GALLERY</span>
             <BsArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Contact: React.FC = () => (
-  <section id="contact" className="py-32 bg-white relative overflow-hidden">
+  <section id="contact" className="py-32 bg-white relative overflow-hidden" style={{ fontFamily: 'Comfortaa, cursive' }}>
     {/* Artistic Background Elements */}
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute top-10 left-10 w-40 h-40 border border-stone-200 rotate-45 opacity-20"></div>
@@ -10,8 +10,8 @@ const Contact: React.FC = () => (
 
     <div className="relative z-10 max-w-6xl mx-auto px-6">
       <div className="text-center mb-20">
-        <h2 className="text-5xl sm:text-4xl md:text-6xl font-extralight tracking-wider mb-6 bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-          CONTACT
+        <h2 className="projects-title">
+          <span className="title-highlight">C</span>ONTACT
         </h2>
         <p className="text-xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">
           Let's discuss your next creative project and bring your vision to life
@@ -29,7 +29,7 @@ const Contact: React.FC = () => (
               <input 
                 type="text" 
                 placeholder="Your Name" 
-                className="w-full px-6 py-4 border border-stone-300 bg-stone-50 text-stone-800 font-light tracking-wide focus:outline-none focus:border-stone-600 focus:bg-white transition-all duration-300" 
+                className="form-input" 
                 required 
               />
             </div>
@@ -37,21 +37,23 @@ const Contact: React.FC = () => (
               <input 
                 type="email" 
                 placeholder="Your Email" 
-                className="w-full px-6 py-4 border border-stone-300 bg-stone-50 text-stone-800 font-light tracking-wide focus:outline-none focus:border-stone-600 focus:bg-white transition-all duration-300" 
+                className="form-input" 
                 required 
               />
             </div>
             <div>
               <textarea 
                 placeholder="Your Message" 
-                className="w-full px-6 py-4 border border-stone-300 bg-stone-50 text-stone-800 font-light tracking-wide focus:outline-none focus:border-stone-600 focus:bg-white transition-all duration-300 resize-none" 
+                className="form-input resize-none" 
                 rows={6} 
                 required 
               />
             </div>
             <button 
               type="submit" 
-              className="curtain-btn w-full px-8 py-4 bg-stone-800 text-white font-light tracking-wide relative overflow-hidden"
+              className="curtain-btn contact-button w-full px-8 py-4 bg-stone-800 text-white font-light tracking-wide relative overflow-hidden"
+              disabled
+              title="Backend not yet implemented"
             >
               SEND MESSAGE
             </button>
@@ -73,7 +75,7 @@ const Contact: React.FC = () => (
                 </div>
                 <div>
                   <div className="text-lg font-light text-stone-800 tracking-wide mb-1">Email</div>
-                  <div className="text-stone-600 font-light">hello@yourportfolio.com</div>
+                  <div className="text-stone-600 font-light">mendozanikkajoie@gmail.com</div>
                 </div>
               </div>
               
@@ -86,7 +88,7 @@ const Contact: React.FC = () => (
                 </div>
                 <div>
                   <div className="text-lg font-light text-stone-800 tracking-wide mb-1">Location</div>
-                  <div className="text-stone-600 font-light">San Francisco, CA</div>
+                  <div className="text-stone-600 font-light">Cebu City, Philippines</div>
                 </div>
               </div>
               
@@ -107,7 +109,7 @@ const Contact: React.FC = () => (
           {/* Social Links */}
           <div>
             <h3 className="text-2xl font-light text-stone-800 tracking-wide mb-8">
-              Follow My Work
+              Connect With Me
             </h3>
             <div className="flex space-x-6">
               <a 

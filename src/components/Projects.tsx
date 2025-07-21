@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+
+// Project thumbnails
 import phishermenImage from '../imgs/phishermen.png';
 import ratatutorImage from '../imgs/ratatutor.png';
 import pathfinderImage from '../imgs/pathfinder.png';
@@ -8,12 +10,54 @@ import secondlifeImage from '../imgs/2ndlife.png';
 import sisiwImage from '../imgs/sisiw.png';
 import honeyImage from '../imgs/honey.png';
 
+// Project gallery images
+import phisher1 from '../imgs/phisher1.png';
+import phisher2 from '../imgs/phisher2.png';
+import phisher3 from '../imgs/phisher3.png';
+import rata1 from '../imgs/rata1.png';
+import rata2 from '../imgs/rata2.png';
+import rata3 from '../imgs/rata3.png';
+import rata4 from '../imgs/rata4.png';
+import rata5 from '../imgs/rata5.png';
+import path1 from '../imgs/path1.png';
+import path2 from '../imgs/path2.png';
+import path3 from '../imgs/path3.png';
+import penny1 from '../imgs/penny1.png';
+import penny2 from '../imgs/penny2.png';
+import penny3 from '../imgs/penny3.png';
+import penny4 from '../imgs/penny4.png';
+import penny5 from '../imgs/penny5.png';
+import second1 from '../imgs/2nd1.png';
+import second2 from '../imgs/2nd2.png';
+import second3 from '../imgs/2nd3.png';
+import sisiw1 from '../imgs/sisiw1.png';
+import honey1 from '../imgs/honey1.png';
+import ar1 from '../imgs/ar1.jpg';
+import ar2 from '../imgs/ar2.jpg';
+import ar3 from '../imgs/ar3.jpg';
+import ar4 from '../imgs/ar4.jpg';
+import ar5 from '../imgs/ar5.jpg';
+import ar6 from '../imgs/ar6.jpg';
+import ar7 from '../imgs/ar7.jpg';
+import ar8 from '../imgs/ar8.jpg';
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  gallery: string[];
+  link: string;
+  technologies: string[];
+  category: string;
+  featured: boolean;
+}
+
+const projects: Project[] = [
   {
     title: 'Super PathFinder',
-    description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
+    description: "Super PathFinder is a dynamic and collaborative task management tool designed to bring clarity to complex projects. It allows teams to visualize their workflows, set dependencies, and track progress in real-time. With its intuitive drag-and-drop interface and Gantt chart integration, PathFinder helps you map out the most efficient path to project completion, ensuring deadlines are met and goals are achieved.",
     image: pathfinderImage,
+    gallery: [path1, path2, path3],
     link: '#',
     technologies: ['Vue.js', 'Firebase', 'Vuex', 'Tailwind CSS'],
     category: 'Website',
@@ -21,8 +65,9 @@ const projects = [
   },
   {
     title: 'Honey OS',
-    description: 'A cross-platform mobile app for tracking workouts, nutrition, and fitness goals with beautiful charts and progress visualization.',
+    description: "Honey OS is a beautifully designed, all-in-one productivity suite that brings a touch of sweetness to your daily digital life. It combines a minimalist design with powerful features, including a smart calendar, a focused to-do list, and a note-taking app. Honey OS is engineered to create a seamless and enjoyable user experience, helping you organize your tasks and ideas with elegance and efficiency.",
     image: honeyImage,
+    gallery: [honey1],
     link: '#',
     technologies: ['React Native', 'Redux', 'Chart.js', 'Expo'],
     category: 'Web App',
@@ -30,8 +75,9 @@ const projects = [
   },
   {
     title: 'Sisiw IDE',
-    description: 'A modern e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.',
+    description: "Sisiw IDE is a lightweight and beginner-friendly Integrated Development Environment tailored for web developers. 'Sisiw', meaning 'chick' in Filipino, reflects its goal: to nurture new programmers. It offers a clean, distraction-free coding environment with essential features like syntax highlighting, code completion, and a built-in terminal, making it the perfect starting point for those hatching their coding journey.",
     image: sisiwImage,
+    gallery: [sisiw1],
     link: '#',
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
     category: 'Web App',
@@ -39,8 +85,9 @@ const projects = [
   },
   {
     title: 'The Phishermen',
-    description: 'A responsive portfolio website with modern animations, dark mode toggle, and smooth scrolling navigation.',
+    description: "The Phishermen is an educational cybersecurity platform designed to teach users how to identify and protect against phishing attacks. Through interactive simulations and real-world examples, users learn to spot malicious emails, fake websites, and other social engineering tactics. Our goal is to arm individuals and organizations with the knowledge to navigate the digital world safely.",
     image: phishermenImage,
+    gallery: [phisher1, phisher2, phisher3],
     link: '#',
     technologies: ['React', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
     category: 'Website',
@@ -48,17 +95,19 @@ const projects = [
   },
   {
     title: 'ExerGuide AR',
-    description: 'A weather application with location-based forecasts, interactive maps, and detailed weather analytics.',
+    description: "ExerGuide AR revolutionizes personal fitness by leveraging Augmented Reality to provide interactive workout instructions. Point your device's camera, and our AR instructors will appear in your room, demonstrating exercises with perfect form. The app offers personalized workout plans, real-time feedback, and progress tracking to ensure you exercise safely and effectively.",
     image: exerguideImage,
-    link: '#',
+    gallery: [ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8],
+    link: 'https://github.com/nikkamendoza/ExerGuide',
     technologies: ['JavaScript', 'OpenWeather API', 'Chart.js', 'CSS3'],
     category: 'Mobile App',
     featured: false
   },
   {
     title: 'Ratatutor',
-    description: 'An intelligent chatbot powered by machine learning with natural language processing and context awareness.',
+    description: "Ratatutor is your personal AI-powered culinary companion. Inspired by the idea that anyone can cook, this chatbot guides you through recipes with step-by-step instructions, answers your cooking questions in real-time, and even suggests dishes based on the ingredients you have. Whether you're a novice or a seasoned cook, Ratatutor makes learning new recipes a delightful experience.",
     image: ratatutorImage,
+    gallery: [rata1, rata2, rata3, rata4, rata5],
     link: '#',
     technologies: ['Python', 'TensorFlow', 'Flask', 'WebSocket'],
     category: 'Website',
@@ -66,8 +115,9 @@ const projects = [
   },
   {
     title: 'PennywAIse',
-    description: 'A comprehensive dashboard for managing multiple social media accounts with analytics and scheduling features.',
+    description: "PennywAIse is an intelligent personal finance manager that uses AI to help you save money and make smarter financial decisions. It automatically tracks your spending, identifies saving opportunities, and provides personalized budget recommendations. With PennywAIse, you can take control of your finances and build a secure financial future, one smart decision at a time.",
     image: pennywaiseImage,
+    gallery: [penny1, penny2, penny3, penny4, penny5],
     link: '#',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis'],
     category: 'Website',
@@ -75,8 +125,9 @@ const projects = [
   },
   {
     title: '2ndlife',
-    description: 'An interactive learning platform with video courses, quizzes, and progress tracking for students.',
+    description: "2ndlife is an online marketplace dedicated to giving pre-loved items a new home. From vintage fashion to refurbished electronics, our platform connects sellers and buyers who share a passion for sustainability and unique finds. By making it easy to buy and sell second-hand goods, 2ndlife promotes a circular economy and helps reduce waste.",
     image: secondlifeImage,
+    gallery: [second1, second2, second3],
     link: '#',
     technologies: ['Vue.js', 'Laravel', 'MySQL', 'AWS'],
     category: 'Website',
@@ -85,147 +136,294 @@ const projects = [
 ];
 
 const Projects: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [previewImageIndex, setPreviewImageIndex] = useState<number | null>(null);
+
+  // Determine number of pages (2 for most, 3 for ExerGuide AR)
+  const isAR = selectedProject?.title === 'ExerGuide AR';
+  const totalPages = isAR ? 3 : 2;
 
   const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
 
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+    setCurrentPage(0);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
+  const handleImageClick = (index: number) => {
+    setPreviewImageIndex(index);
+  };
+
+  const closeImagePreview = () => {
+    setPreviewImageIndex(null);
+  };
+
+  const handleNextImage = () => {
+    if (selectedProject && previewImageIndex !== null) {
+      setPreviewImageIndex((previewImageIndex + 1) % selectedProject.gallery.length);
+    }
+  };
+
+  const handlePrevImage = () => {
+    if (selectedProject && previewImageIndex !== null) {
+      setPreviewImageIndex((previewImageIndex - 1 + selectedProject.gallery.length) % selectedProject.gallery.length);
+    }
+  };
+
   return (
-    <section 
-      ref={sectionRef}
-      id="projects" 
-      className="relative py-32 bg-stone-50 overflow-hidden"
-    >
-      {/* Artistic Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 border border-stone-300/20 rotate-45"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 border border-stone-300/15 rounded-full"></div>
-        <div className="absolute bottom-40 left-20 w-16 h-16 bg-stone-200/30 rotate-12"></div>
-        <div className="absolute bottom-20 right-10 w-20 h-20 border border-stone-300/20 transform -rotate-12"></div>
+    <div className="projects-and-featured-wrapper">
+      <div className="projects-bg-art">
+        <div className="blob blob-1"></div>
+        <div className="blob blob-2"></div>
+        <div className="blob blob-3"></div>
+        <div className="blob blob-4"></div>
+        <div className="blob blob-5"></div>
+        <div className="blob blob-6"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="flex flex-col items-center mb-20">
-          <h2 className="text-5xl sm:text-4xl md:text-6xl font-extralight tracking-wider mb-6 bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            PROJECTS
-          </h2>
-          <p className="text-xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed text-center">
-            A collection of creative digital experiences that showcase the intersection of art and technology
-          </p>
-        </div>
+      <section
+        ref={sectionRef}
+        id="projects"
+        className="projects-section"
+      >
+        <div className="projects-container">
+          <div className="projects-header">
+            <h2 className="projects-title">
+              <span className="title-highlight">P</span>ROJECT <span className="title-highlight">G</span>ALLERY
+            </h2>
+            <p className="projects-subtitle">
+              A collection of creative digital experiences that showcase the intersection of art and technology
+            </p>
+          </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-6 mb-20">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-8 py-3 font-light tracking-wide transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'border-b-2 border-stone-800 text-stone-800'
-                  : 'text-stone-500 hover:text-stone-700 hover:border-b border-stone-300'
-              }`}
-            >
-              {category.toUpperCase()}
-            </button>
-          ))}
-        </div>
+          <div className="category-filters">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`filter-button ${selectedCategory === category ? 'active' : ''}`}
+              >
+                {category.toUpperCase()}
+              </button>
+            ))}
+          </div>
 
-        {/* Gallery Grid */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-          {filteredProjects.map((project, idx) => (
-            <div
-              key={idx}
-              className={`break-inside-avoid group relative overflow-hidden transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${idx * 100}ms` }}
-              onMouseEnter={() => setHoveredProject(idx)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              <div className="relative overflow-hidden bg-white">
+          <div className="gallery-grid">
+            {filteredProjects.map((project, idx) => (
+              <div
+                key={idx}
+                className="project-card"
+                style={{ transitionDelay: `${idx * 100}ms` }}
+                onClick={() => handleProjectClick(project)}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                  className="project-image"
                 />
-                
-                {/* Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/90 to-black/60 backdrop-blur-md transition-all duration-500 ${
-                  hoveredProject === idx ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="px-2 py-1 border border-white/30 text-xs font-light tracking-wide">
-                        {project.category}
-                      </span>
-                      <a
-                        href={project.link}
-                        className="px-3 py-1 bg-white/20 backdrop-blur-sm border border-white/30 text-white text-xs font-light tracking-wide hover:bg-white/30 hover:border-white/50 transition-all duration-300 rounded-sm flex items-center gap-1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span>LINK</span>
-                        <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
+
+                <div className="card-overlay"></div>
+
+                <div className="card-content">
+                  <div className="card-title-container">
+                    <h3 className="project-title-text">{project.title}</h3>
+                    <p className="project-category-text">{project.category}</p>
+                  </div>
+
+                  <div className="card-hover-content">
+                    <p className="project-description-text">{project.description}</p>
+                    <div className="tech-tags">
+                      {project.technologies.map(tech => (
+                        <span key={tech} className="tech-tag">{tech}</span>
+                      ))}
                     </div>
-                    <h3 className="text-lg font-light tracking-wide mb-2">{project.title}</h3>
-                    <p className="text-stone-200 mb-4 line-clamp-2 font-light leading-relaxed text-sm">{project.description}</p>
+                    <a
+                      href={project.link}
+                      className="project-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>View Project</span>
+                      <svg className="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Gallery Stats */}
-        <div className="mt-32 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            <div className="text-stone-800">
-              <div className="text-4xl font-extralight mb-2">{projects.length}</div>
-              <div className="text-sm text-stone-600 font-light tracking-wide">TOTAL WORKS</div>
+        {selectedProject && (
+          <div
+            className="modal-backdrop"
+            onClick={closeModal}
+          >
+            <div
+              className="modal-content"
+              onClick={e => e.stopPropagation()}
+              style={{ fontFamily: "'Cutive Mono', 'Courier New', monospace" }}
+            >
+              <button onClick={closeModal} className="modal-close-button">
+                <svg className="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+
+              <div className="modal-page-container">
+                <div className={`modal-page ${currentPage === 0 ? 'visible' : ''}`}> {/* Frontpage */}
+                  <span className="modal-project-category">{selectedProject.category}</span>
+                  <h2 className="modal-project-title">{selectedProject.title}</h2>
+                  <div className="modal-divider"></div>
+                  <p className="modal-project-description">{selectedProject.description}</p>
+                  <h4 className="modal-tech-title">Technologies Used</h4>
+                  <div className="modal-tech-tags">
+                    {selectedProject.technologies.map(tech => (
+                      <span key={tech} className="modal-tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-website-link">
+                    <span>{selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
+                    <svg className="link-icon-modal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                  {selectedProject.title === 'ExerGuide AR' && (
+                    <a href="https://drive.google.com/drive/u/0/folders/1xQN5uzOku0qNGzQwqFNX_hSV_-TypQfD" target="_blank" rel="noopener noreferrer" className="modal-website-link" style={{marginLeft: '1.5rem'}}>
+                      <span>APK Link</span>
+                      <svg className="link-icon-modal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  )}
+                </div>
+
+                <div className={`modal-page ${currentPage === 1 ? 'visible' : ''}`}> {/* Gallery */}
+                  <h2 className="modal-gallery-title">Image Gallery</h2>
+                  {selectedProject.gallery.length > 1 ? (
+                    <div className="modal-image-grid">
+                      {selectedProject.gallery.map((img, index) => (
+                        <div key={index} className="modal-image-container" onClick={() => handleImageClick(index)}>
+                          <img src={img} alt={`${selectedProject.title} gallery image ${index + 1}`} className="modal-gallery-image" />
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="modal-single-image-container" onClick={() => handleImageClick(0)}>
+                      <img src={selectedProject.gallery[0]} alt={`${selectedProject.title} gallery image 1`} className="modal-single-image" />
+                    </div>
+                  )}
+                </div>
+
+                {/* AR Video Page */}
+                {isAR && (
+                  <div className={`modal-page ${currentPage === 2 ? 'visible' : ''}`}> {/* Video */}
+                    <h2 className="modal-gallery-title">Demo Video</h2>
+                    <div className="featured-video-wrapper" style={{marginTop: '2rem'}}>
+                      <iframe
+                        className="featured-video"
+                        src="https://www.youtube.com/embed/tfrpoiO_sHs"
+                        title="ExerGuide AR Demo Video"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="modal-footer">
+                  <button
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                    disabled={currentPage === 0}
+                    className="modal-nav-button"
+                  >
+                    Previous
+                  </button>
+                  <div className="modal-page-indicator">Page {currentPage + 1} of {totalPages}</div>
+                  <button
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    disabled={currentPage === totalPages - 1}
+                    className="modal-nav-button"
+                  >
+                    Next
+                  </button>
+              </div>
             </div>
-            <div className="text-stone-800">
-              <div className="text-4xl font-extralight mb-2">{categories.length - 1}</div>
-              <div className="text-sm text-stone-600 font-light tracking-wide">CATEGORIES</div>
+          </div>
+        )}
+
+        {previewImageIndex !== null && selectedProject && (
+          <div className="image-preview-backdrop" onClick={closeImagePreview}>
+            <button className="image-preview-close" onClick={closeImagePreview}>
+              <svg className="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <button className="image-preview-nav prev" onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            </button>
+
+            <div className="image-preview-content" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={selectedProject.gallery[previewImageIndex]}
+                alt={`${selectedProject.title} preview ${previewImageIndex + 1}`}
+                className="image-preview-large"
+              />
             </div>
-            <div className="text-stone-800">
-              <div className="text-4xl font-extralight mb-2">{projects.filter(p => p.featured).length}</div>
-              <div className="text-sm text-stone-600 font-light tracking-wide">FEATURED</div>
+
+            <button className="image-preview-nav next" onClick={(e) => { e.stopPropagation(); handleNextImage(); }}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* Featured Section */}
+      <section className="featured-section">
+        <br />
+        <br />
+        <br />
+        <div className="featured-container artistic">
+          <div className="featured-column-left">
+            <div className="featured-video-card-v2">
+              <iframe
+                className="featured-video-v2"
+                src="https://www.youtube.com/embed/tfrpoiO_sHs"
+                title="Featured Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
-            <div className="text-stone-800">
-              <div className="text-4xl font-extralight mb-2">100%</div>
-              <div className="text-sm text-stone-600 font-light tracking-wide">SATISFACTION</div>
+          </div>
+          <div className="featured-column-right">
+            <h2 className="featured-title-v2">Featured Showcase</h2>
+            <p className="featured-subtitle-v2">A closer look at my work in action.</p>
+            <div className="featured-details-v2">
+              <h3 className="featured-details-title-v2">ExerGuide AR: Augmented Reality Fitness</h3>
+              <p className="featured-details-text-v2">
+                This video showcases the core features of ExerGuide AR. Watch as the 3D virtual coach demonstrates exercises in real space, guiding users through safe and effective workouts.
+              </p>
+              <ul className="featured-details-list-v2">
+                <li>- Real-time AR exercise demonstrations</li>
+                <li>- Multimodal learning (3D, audio, text)</li>
+                <li>- Interactive model controls</li>
+                <li>- Muscle highlight mode for learning</li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        <br />
+        <br />
+      </section>
+    </div>
   );
 };
 
