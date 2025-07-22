@@ -65,7 +65,7 @@ const projects: Project[] = [
     image: ratatutorImage,
     gallery: [rata1, rata2, rata3, rata4, rata5],
     link: 'https://ratatutor.onrender.com',
-    technologies: ['Django', 'React', 'Tailwind CSS', 'OpenRouter API'],
+    technologies: ['Django', 'React', 'Tailwind CSS'],
     category: 'Website',
     featured: true,
     role: 'UI/UX Designer, Frontend Developer'
@@ -309,32 +309,42 @@ const Projects: React.FC = () => {
                 <div className={`modal-page ${currentPage === 0 ? 'visible' : ''}`}> {/* Frontpage */}
                   <span className="modal-project-category">{selectedProject.category}</span>
                   <h2 className="modal-project-title">{selectedProject.title}</h2>
+                  <div style={{ margin: '0 0 0.5rem 0', display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
+                    <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-website-link modal-link-small">
+                      <span>{selectedProject.title === 'Uppa' ? 'Visit Design' : selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
+                      <svg style={{marginLeft: '0.3em', width: '1.1em', height: '1.1em', verticalAlign: 'middle', opacity: 0.8}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="2" />
+                        <path d="M10 14L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M15 4h5v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                    {selectedProject.title === 'ExerGuide AR' && (
+                      <a href="https://drive.google.com/drive/u/0/folders/1xQN5uzOku0qNGzQwqFNX_hSV_-TypQfD" target="_blank" rel="noopener noreferrer" className="modal-website-link modal-link-small">
+                        <span>APK Link</span>
+                        <svg style={{marginLeft: '0.3em', width: '1.1em', height: '1.1em', verticalAlign: 'middle', opacity: 0.8}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="2" />
+                          <path d="M10 14L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M15 4h5v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                   <div className="modal-divider"></div>
                   <p className="modal-project-description">{selectedProject.description}</p>
                   <div className="modal-role-section">
                     <span className="modal-role-title">Role</span>
-                    <div className="modal-tech-tags">
+                    <div className="modal-tag-list">
                       {selectedProject.role.split(',').map(role => (
-                        <span key={role.trim()} className="modal-tech-tag">{role.trim()}</span>
+                        <span key={role.trim()} className="modal-tag">{role.trim()}</span>
                       ))}
                     </div>
                   </div>
                   <h4 className="modal-tech-title">Technologies Used</h4>
-                  <div className="modal-tech-tags">
+                  <div className="modal-tag-list">
                     {selectedProject.technologies.map(tech => (
-                      <span key={tech} className="modal-tech-tag">{tech}</span>
+                      <span key={tech} className="modal-tag">{tech}</span>
                     ))}
                   </div>
-                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-website-link">
-                    <span>{selectedProject.title === 'Uppa' ? 'Visit Design' : selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
-                    <svg className="link-icon-modal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                  </a>
-                  {selectedProject.title === 'ExerGuide AR' && (
-                    <a href="https://drive.google.com/drive/u/0/folders/1xQN5uzOku0qNGzQwqFNX_hSV_-TypQfD" target="_blank" rel="noopener noreferrer" className="modal-website-link" style={{marginLeft: '1.5rem'}}>
-                      <span>APK Link</span>
-                      <svg className="link-icon-modal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                    </a>
-                  )}
                 </div>
 
                 <div className={`modal-page ${currentPage === 1 ? 'visible' : ''}`}> {/* Gallery */}
