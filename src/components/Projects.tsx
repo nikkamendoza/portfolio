@@ -382,20 +382,20 @@ const Projects: React.FC = () => {
                 )}
               </div>
 
-              <div className="modal-footer">
+              <div className="modal-footer" style={{justifyContent: 'center', gap: '1.5rem'}}>
                   <button
                     onClick={() => setCurrentPage(currentPage - 1)}
                     disabled={currentPage === 0}
-                    className="modal-nav-button"
+                    className="modal-nav-btn-modern"
                     aria-label="Previous"
                   >
                     <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
                   </button>
-                  <div className="modal-page-indicator">Page {currentPage + 1} of {totalPages}</div>
+                  <div className="modal-page-pill">Page {currentPage + 1} of {totalPages}</div>
                   <button
                     onClick={() => setCurrentPage(currentPage + 1)}
                     disabled={currentPage === totalPages - 1}
-                    className="modal-nav-button"
+                    className="modal-nav-btn-modern"
                     aria-label="Next"
                   >
                     <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
