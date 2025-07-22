@@ -10,7 +10,7 @@ const Contact: React.FC = () => (
 
     <div className="relative z-10 max-w-6xl mx-auto px-6">
       <div className="text-center mb-20">
-        <h2 className="projects-title">
+        <h2 className="section-title">
           <span className="title-highlight">C</span>ONTACT
         </h2>
         <p className="text-xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">

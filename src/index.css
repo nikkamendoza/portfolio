@@ -362,7 +362,7 @@ a { text-decoration: none; }
 
 .projects-and-featured-wrapper {
   position: relative;
-  background-color: #fafaf9; /* Fallback */
+  background-color: #000000; /* Fallback */
   overflow: hidden;
 }
 
@@ -376,7 +376,7 @@ a { text-decoration: none; }
 .projects-bg-art .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(70px);
 }
 .projects-bg-art .blob-1 {
   width: 450px;
@@ -448,13 +448,21 @@ a { text-decoration: none; }
   font-weight: 200;
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
+  color: #fafaf9;
+  font-family: 'Comfortaa', cursive;
+}
+.section-title {
+  font-size: 3.75rem;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
   color: #292524;
   font-family: 'Comfortaa', cursive;
 }
 
 .projects-subtitle {
   font-size: 1.25rem;
-  color: #57534e;
+  color: #e4e4e4;
   max-width: 42rem;
   font-weight: 300;
   line-height: 1.6;
@@ -474,18 +482,18 @@ a { text-decoration: none; }
   font-weight: 300;
   letter-spacing: 0.025em;
   transition: all 0.3s;
-  color: #78716c;
+  color: #e4e4e4;
   border-bottom: 2px solid transparent;
 }
 
 .filter-button:hover {
-  color: #44403c;
-  border-bottom-color: #d6d3d1;
+  color: #a8a29e;
+  border-bottom-color: #a8a29e;
 }
 
 .filter-button.active {
-  color: #292524;
-  border-bottom-color: #292524;
+  color: #fafaf9;
+  border-bottom-color: #fafaf9;
 }
 
 .gallery-grid {
@@ -1074,25 +1082,25 @@ button {
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  color: #292524; /* Replaced gradient with solid color */
+  color: #fafaf9; /* Replaced gradient with solid color */
 }
 
 .featured-subtitle-v2 {
   font-size: 1.1rem;
-  color: #78716c;
+  color: #e4e4e4;
   margin-bottom: 2rem;
 }
 
 .featured-details-title-v2 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #44403c;
+  color: #fafaf9;
   margin-bottom: 1rem;
 }
 
 .featured-details-text-v2 {
   font-size: 1rem;
-  color: #57534e;
+  color: #e4e4e4;
   margin-bottom: 1.25rem;
   line-height: 1.6;
   text-align: justify;
@@ -1102,7 +1110,7 @@ button {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #78716c;
+  color: #e4e4e4;
   font-size: 1rem;
   line-height: 1.8;
 }

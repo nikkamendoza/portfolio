@@ -36,7 +36,7 @@ const About: React.FC = () => (
 
     <div className="relative z-10 max-w-6xl mx-auto px-6">
       <div className="flex flex-col items-center mb-20">
-        <h2 className="projects-title">
+        <h2 className="section-title">
           <span className="title-highlight">A</span>BOUT
         </h2>
       </div>
