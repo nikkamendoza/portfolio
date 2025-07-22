@@ -735,10 +735,10 @@ a { text-decoration: none; }
 }
 
 .modal-project-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600 !important;
   color: #292524;
-  margin: 1rem 0;
+  margin: 0 !important;
 }
 
 .modal-divider {
@@ -890,10 +890,10 @@ a { text-decoration: none; }
 
 .modal-page-pill {
   display: inline-block;
-  padding: 0.38em 1.3em;
+  padding: 0.15em 0.7em;
   background: none;
   color: #444;
-  font-size: 0.97rem;
+  font-size: 0.75rem;
   font-family: 'Comfortaa', cursive;
   font-weight: 500;
   border-radius: 999px;
@@ -901,6 +901,13 @@ a { text-decoration: none; }
   border: none;
   letter-spacing: 0.01em;
   margin: 0 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .modal-page-pill {
+    font-size: 0.65rem;
+    padding: 0.1em 0.5em;
+  }
 }
 
 button {
@@ -1279,7 +1286,7 @@ button {
   }
   .modal-project-title {
     font-size: 1.05rem !important;
-    margin: 0.5rem 0 !important;
+    margin: 0 !important;
   }
   .modal-project-category {
     font-size: 0.7rem !important;
@@ -1569,10 +1576,10 @@ body, html, #root {
 
 .modal-tag {
   display: inline-block;
-  padding: 0.38em 1.1em;
+  padding: 0.15em 0.5em;
   background: linear-gradient(90deg, #f3f4f6 60%, #e0e7ef 100%);
   color: #444;
-  font-size: 0.97rem;
+  font-size: 0.75rem;
   font-weight: 500;
   border-radius: 999px;
   border: 1px solid #ececec;
@@ -1591,8 +1598,21 @@ body, html, #root {
 
 @media (max-width: 960px) and (min-width: 751px) {
   .modal-tag {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     padding: 0.22em 0.7em;
+  }
+  .modal-project-title {
+    font-size: 1.8rem !important;
+  }
+  .modal-link-small {
+    font-size: 0.78rem;
+  }
+  .modal-page-pill {
+    font-size: 0.7rem;
+    padding: 0.13em 0.6em;
+  }
+  .modal-project-description {
+    font-size: 0.85rem !important;
   }
 }
 
@@ -1609,11 +1629,16 @@ body, html, #root {
   letter-spacing: 0.01em;
   font-family: 'Comfortaa', cursive, inherit;
   transition: color 0.18s;
+  display: block;
+  width: fit-content;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 .modal-link-small:hover {
   color: #444;
   text-decoration: none;
 }
+
 
 @media (max-width: 750px) and (min-width: 601px) {
   .modal-content {
@@ -1626,12 +1651,44 @@ body, html, #root {
   .modal-project-title {
     font-size: 2rem !important;
     font-weight: 600 !important;
+    margin: 0 !important;
   }
   .modal-tag {
-    font-size: 0.89rem;
+    font-size: 0.75rem;
     padding: 0.28em 0.85em;
   }
   .modal-link-small {
     font-size: 0.78rem;
+  }
+  .modal-page-pill {
+    font-size: 0.7rem;
+    padding: 0.13em 0.6em;
+  }
+  .modal-project-description {
+    font-size: 0.9rem !important;
+  }
+}
+
+.modal-role-title,
+.modal-tech-title {
+  font-size: 0.85rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+@media (max-width: 600px) {
+  .modal-role-title,
+  .modal-tech-title {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-role-title,
+  .modal-tech-title,
+  .modal-tag,
+  .modal-link-small {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.2rem !important;
   }
 }
