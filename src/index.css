@@ -1749,3 +1749,47 @@ body, html, #root {
 #creator-gallery {
   background: #181818 !important;
 }
+
+@keyframes robot-transform {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotateX(90deg) skewY(30deg) translateY(80px);
+    filter: brightness(1.5) grayscale(1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2, 0.8) rotateX(-10deg) skewY(-10deg) translateY(-10px);
+    filter: brightness(1.2) grayscale(0.3);
+  }
+  80% {
+    transform: scale(0.95, 1.05) rotateX(2deg) skewY(2deg) translateY(2px);
+    filter: brightness(1.1) grayscale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.creator-letter {
+  animation: robot-transform 0.85s cubic-bezier(0.23, 1.2, 0.32, 1) both;
+  /* Will override below with delay per letter */
+}
+
+.creator-letter-0 { animation-delay: 0.05s; }
+.creator-letter-1 { animation-delay: 0.15s; }
+.creator-letter-2 { animation-delay: 0.25s; }
+.creator-letter-3 { animation-delay: 0.35s; }
+.creator-letter-4 { animation-delay: 0.45s; }
+.creator-letter-5 { animation-delay: 0.55s; }
+.creator-letter-6 { animation-delay: 0.65s; }
+.creator-letter-7 { animation-delay: 0.75s; }
+.creator-letter-8 { animation-delay: 0.85s; }
+.creator-letter-9 { animation-delay: 0.95s; }
+.creator-letter-10 { animation-delay: 1.05s; }
+.creator-letter-11 { animation-delay: 1.15s; }
+.creator-letter-12 { animation-delay: 1.25s; }
+.creator-letter-13 { animation-delay: 1.35s; }
+.creator-letter-14 { animation-delay: 1.45s; }
+.creator-letter-15 { animation-delay: 1.55s; }
