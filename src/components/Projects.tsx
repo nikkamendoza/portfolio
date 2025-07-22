@@ -9,6 +9,7 @@ import exerguideImage from '../imgs/exerguide.png';
 import secondlifeImage from '../imgs/2ndlife.png';
 import sisiwImage from '../imgs/sisiw.png';
 import honeyImage from '../imgs/honey.png';
+import uppaImage from '../imgs/uppa.png';
 
 // Project gallery images
 import phisher1 from '../imgs/phisher1.png';
@@ -40,6 +41,10 @@ import ar5 from '../imgs/ar5.jpg';
 import ar6 from '../imgs/ar6.jpg';
 import ar7 from '../imgs/ar7.jpg';
 import ar8 from '../imgs/ar8.jpg';
+import uppa1 from '../imgs/uppa1.png';
+import uppa2 from '../imgs/uppa2.png';
+import uppa3 from '../imgs/uppa3.png';
+import uppa4 from '../imgs/uppa4.png';
 
 interface Project {
   title: string;
@@ -141,6 +146,17 @@ const projects: Project[] = [
     category: 'Web App',
     featured: true,
     role: 'UI/UX Designer, Frontend Developer'
+  },
+  {
+    title: 'Uppa',
+    description: 'Uppa is a location-based mobile app that connects renters with nearby accommodations—boarding houses, apartments, and condos—making it easy to find and manage rentals. Landlords benefit from organized property management and marketing tools.',
+    image: uppaImage,
+    gallery: [uppa1, uppa2, uppa3, uppa4],
+    link: 'https://www.figma.com/design/pyQu6tbID1cLzZuaLdq9Cy/UPPA?node-id=0-1&p=f&t=7HOfgVNloKhwxqe0-0',
+    technologies: ['Figma'],
+    category: 'Mobile App',
+    featured: true,
+    role: 'UI/UX Designer'
   }
 ];
 
@@ -310,7 +326,7 @@ const Projects: React.FC = () => {
                     ))}
                   </div>
                   <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-website-link">
-                    <span>{selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
+                    <span>{selectedProject.title === 'Uppa' ? 'Visit Design' : selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
                     <svg className="link-icon-modal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                   </a>
                   {selectedProject.title === 'ExerGuide AR' && (
