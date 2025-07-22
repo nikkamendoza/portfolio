@@ -422,23 +422,16 @@ const Projects: React.FC = () => {
 
       {/* Featured Section */}
       <section className="featured-section">
-        <br />
-        <br />
-        <br />
-        <div className="featured-container artistic">
-          <div className="featured-column-left">
+        <div className="featured-container artistic" style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2rem', justifyContent: 'center'}}>
             <div className="featured-video-card-v2">
               <iframe
-                className="featured-video-v2"
                 src="https://www.youtube.com/embed/tfrpoiO_sHs"
                 title="Featured Video"
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
-          </div>
-          <div className="featured-column-right">
+          <div className="featured-column-right" style={{flex: '2 1 320px', minWidth: '280px', maxWidth: '600px', margin: '0 auto'}}>
             <h2 className="featured-title-v2">Featured Showcase</h2>
             <p className="featured-subtitle-v2">A closer look at my work in action.</p>
             <div className="featured-details-v2">
@@ -455,8 +448,6 @@ const Projects: React.FC = () => {
             </div>
           </div>
         </div>
-        <br />
-        <br />
       </section>
     </div>
   );
