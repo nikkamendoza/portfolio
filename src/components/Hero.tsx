@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-light text-stone-600 tracking-wide mb-6 hero-title" style={{ fontFamily: 'Comfortaa, cursive' }}>
-          NIKKA MENDOZA
+          PORTFOLIO
         </h2>
         <p className="text-lg md:text-xl text-stone-600 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
           A curated collection of digital experiences, creative solutions, and innovative designs that showcase the intersection of art and technology.

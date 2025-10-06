@@ -66,8 +66,8 @@ const App: React.FC = () => {
         </div>
       </nav>
       <main>
-        <section id="hero"><Hero /></section>
         <CreatorGallery />
+        <section id="hero"><Hero /></section>
         <About />
         <Projects />
         <Contact />
