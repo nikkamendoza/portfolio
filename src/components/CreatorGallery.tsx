@@ -86,11 +86,11 @@ const CreatorGallery: FC = () => {
           ) : null}
         </div>
       ))}
-      <div style={{ position: 'relative', zIndex: 2, minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="creator-typography-grid">
-          {['M','e','e','t',' ','t','h','e',' ','C','r','e','a','t','o','r'].map((char, i) => (
-            <span key={i} className={`creator-letter creator-letter-${i} ${char === ' ' ? 'creator-space' : ''}`}>{char}</span>
-          ))}
+      <div style={{ position: 'relative', zIndex: 2, minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', paddingLeft: '6vw' }}>
+        <div className="creator-heading">
+          <div className="creator-heading-line"><span className='title-highlight'>M</span>eet</div>
+          <div className="creator-heading-line">the</div>
+          <div className="creator-heading-line"><span className='title-highlight'>C</span>reator</div>
         </div>
       </div>
     </section>
