@@ -1721,35 +1721,6 @@ body, html, #root {
 }
 .creator-space { pointer-events: none; }
 
-/* Scrabble-style heading tiles */
-.scrabble-heading { display:flex; flex-direction:column; gap:1.25rem; }
-.scrabble-line { display:flex; gap:0.6rem; align-items:flex-end; }
-.scrabble-tile {
-  width: min(5.2vw, 84px);
-  height: min(5.2vw, 84px);
-  background: linear-gradient(180deg,#fbf9f6,#f1eee9);
-  border: 2px solid rgba(0,0,0,0.12);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  border-radius:6px;
-  font-family: 'Comfortaa', cursive;
-  font-weight:700;
-  color:#292524;
-}
-.scrabble-letter { font-size: clamp(1.6rem, 4.8vw, 3.6rem); }
-.tile-value { position:absolute; right:6px; bottom:6px; font-size:0.7rem; color:#57534e; }
-
-/* Ensure tile lines keep similar width to previous heading by limiting max-width */
-.scrabble-heading, .scrabble-line { max-width: 48ch; }
-
-/* Nudge middle line to overlap slightly with lines above/below */
-.scrabble-line.middle { margin-top: -0.65rem; margin-bottom: -0.4rem; }
-.scrabble-line.middle .connect-left { transform: translateX(-20%) translateY(4%); }
-.scrabble-line.middle .connect-right { transform: translateX(18%) translateY(4%); }
-
 /* Optional: Make the background of the section dark for contrast */
 #creator-gallery {
   background: #181818 !important;
