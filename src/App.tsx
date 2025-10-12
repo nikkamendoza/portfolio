@@ -29,7 +29,7 @@ const App: React.FC = () => {
     <div style={{ fontFamily: 'Comfortaa, cursive' }}>
       <nav className="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-stone-200" ref={navRef}>
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-          <Link to="hero" smooth duration={800} onClick={closeMenu} className="logo-container">
+          <Link to="creator" smooth duration={800} onClick={closeMenu} className="logo-container">
             <div className="logo">
               N<span className="logo-m">M</span>
             </div>
@@ -37,9 +37,9 @@ const App: React.FC = () => {
           
           {/* Desktop Menu */}
           <div className="desktop-nav flex items-center space-x-8">
-            <Link to="about" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">ABOUT</Link>
-            <Link to="projects" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">GALLERY</Link>
-            <Link to="contact" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">CONTACT</Link>
+            <Link to="about" smooth duration={800} className="cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">ABOUT</Link>
+            <Link to="projects" smooth duration={800} className="cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">GALLERY</Link>
+            <Link to="contact" smooth duration={800} className="cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">CONTACT</Link>
           </div>
 
           {/* Kebab Menu Button */}
@@ -66,7 +66,7 @@ const App: React.FC = () => {
         </div>
       </nav>
       <main>
-        <CreatorGallery />
+        <section id="creator"><CreatorGallery /></section>
         <section id="hero"><Hero /></section>
         <About />
         <Projects />

@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const creativity = "Imagination  ";
 const is = "is ";
 const my = "my ";
-const craft = "tool";
+const craft = "tool.";
 const sentence3 = "Nikka Joie Sanchez Mendoza";
 
 // Utility for animation
@@ -84,8 +84,8 @@ export function LetterCollision() {
   }, []);
 
   return (
-    <div ref={containerRef} className="scroll-smooth mt-44">
-      <div className="mb-32 flex flex-col justify-end">
+    <div ref={containerRef} className="scroll-smooth">
+      <div className="mt-24 flex flex-col justify-end">
         <div className="flex flex-wrap">
           <LetterDisplay word={creativity} />
         </div>
@@ -178,7 +178,7 @@ const floatingItems: FloatingItem[] = [
   {
     type: "image",
     content: images[2],
-    style: { bottom: "47%", right: "20%", transform: "rotate(-12deg)" },
+    style: { bottom: "1%", right: "20%", transform: "rotate(-12deg)" },
     anim: "float4",
     size: { width: 300, height: 350 },
   },
@@ -192,7 +192,7 @@ const floatingItems: FloatingItem[] = [
   {
     type: "image",
     content: images[1],
-    style: { bottom: "56%", right: "8%", transform: "rotate(10deg)" },
+    style: { bottom: "15%", right: "8%", transform: "rotate(10deg)" },
     anim: "float6",
     size: { width: 300, height: 350 },
   },
@@ -214,10 +214,10 @@ const CreatorGallery: FC = () => {
       id="creator-gallery"
       style={{
         position: "relative",
-        minHeight: "100vh",
+        maxHeight: "100vh",
         background: "#8B8078",
         fontFamily: "Inter, sans-serif",
-        fontWeight: 600,
+        fontWeight: 550,
         letterSpacing: "0.6em",
       }}
     >
@@ -303,13 +303,6 @@ const CreatorGallery: FC = () => {
       >
         {/* ✨ Added LetterCollision here */}
         <LetterCollision />
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-stone-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-stone-400 rounded-full mt-2 animate-pulse"></div>
-        </div>
       </div>
     </section>
   );
