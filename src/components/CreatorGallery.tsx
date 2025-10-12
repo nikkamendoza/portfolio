@@ -19,7 +19,7 @@ const creativity = "Imagination  ";
 const is = "is ";
 const my = "my ";
 const craft = "tool";
-const sentence3 = "Nikka Mendoza";
+const sentence3 = "Nikka Joie Sanchez Mendoza";
 
 // Utility for animation
 function getRandomSpeed() {
@@ -84,8 +84,8 @@ export function LetterCollision() {
   }, []);
 
   return (
-    <div ref={containerRef} className="ml-2 scroll-smooth mt-16">
-      <div className="mb-20 flex flex-col justify-end lg:mb-24">
+    <div ref={containerRef} className="scroll-smooth mt-44">
+      <div className="mb-32 flex flex-col justify-end">
         <div className="flex flex-wrap">
           <LetterDisplay word={creativity} />
         </div>
@@ -178,7 +178,7 @@ const floatingItems: FloatingItem[] = [
   {
     type: "image",
     content: images[2],
-    style: { bottom: "5%", right: "20%", transform: "rotate(-12deg)" },
+    style: { bottom: "47%", right: "20%", transform: "rotate(-12deg)" },
     anim: "float4",
     size: { width: 300, height: 350 },
   },
@@ -192,7 +192,7 @@ const floatingItems: FloatingItem[] = [
   {
     type: "image",
     content: images[1],
-    style: { bottom: "25%", right: "4%", transform: "rotate(10deg)" },
+    style: { bottom: "56%", right: "8%", transform: "rotate(10deg)" },
     anim: "float6",
     size: { width: 300, height: 350 },
   },
@@ -216,8 +216,9 @@ const CreatorGallery: FC = () => {
         position: "relative",
         minHeight: "100vh",
         background: "#8B8078",
-        overflow: "hidden",
-        fontFamily: "Comfortaa, cursive",
+        fontFamily: "Inter, sans-serif",
+        fontWeight: 600,
+        letterSpacing: "0.6em",
       }}
     >
       <style>{floatKeyframes}</style>
