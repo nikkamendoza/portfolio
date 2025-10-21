@@ -31,13 +31,13 @@ const Hero: React.FC = () => {
   const bounce = (factor: number, offset: number = 0) => `translateY(${Math.sin((scrollY + offset) * 0.02) * factor}px)`;
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden" style={{ fontFamily: 'Comfortaa, cursive' }}>
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden font-comfortaa">
       {/* Abstract Animated Squares - Randomly Scattered */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {squares.map((sq, i) => (
           <div
             key={i}
-            className={`absolute rounded-md shadow-lg`}
+            className="absolute rounded-md shadow-lg"
             style={{
               top: sq.top,
               left: sq.left,
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
       </div>
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-light text-stone-600 tracking-wide mb-6 hero-title" style={{ fontFamily: 'Comfortaa, cursive' }}>
+        <h2 className="text-4xl md:text-6xl font-light text-stone-600 tracking-wide mb-6 hero-title font-comfortaa">
           PORTFOLIO
         </h2>
         <p className="text-lg md:text-xl text-stone-600 mb-12 font-light leading-relaxed max-w-2xl mx-auto">

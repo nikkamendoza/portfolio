@@ -26,7 +26,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ fontFamily: 'Comfortaa, cursive' }}>
+    <div className="font-comfortaa">
       <nav className="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-stone-200" ref={navRef}>
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
           <Link to="hero" smooth duration={800} onClick={closeMenu} className="logo-container">
@@ -36,14 +36,14 @@ const App: React.FC = () => {
           </Link>
           
           {/* Desktop Menu */}
-          <div className="desktop-nav flex items-center space-x-8">
+          <div className="hidden sm:flex items-center space-x-8">
             <Link to="about" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">ABOUT</Link>
             <Link to="projects" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">GALLERY</Link>
             <Link to="contact" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">CONTACT</Link>
           </div>
 
           {/* Kebab Menu Button */}
-          <div className="mobile-nav-button">
+          <div className="sm:hidden">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
               className="text-stone-800 hover:text-stone-600 focus:outline-none"
@@ -57,11 +57,15 @@ const App: React.FC = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`mobile-nav-menu ${isMenuOpen ? 'open' : ''}`}>
+        <div className={`sm:hidden absolute top-full right-6 w-64 bg-white/98 backdrop-blur-sm rounded-lg shadow-lg p-4 mt-1 transition-all duration-200 ease-out ${
+          isMenuOpen 
+            ? 'opacity-100 transform translate-y-0 pointer-events-auto' 
+            : 'opacity-0 transform -translate-y-2 pointer-events-none'
+        }`}>
           <div className="flex flex-col items-center space-y-2">
-            <Link to="about" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2">ABOUT</Link>
-            <Link to="projects" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2">GALLERY</Link>
-            <Link to="contact" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2">CONTACT</Link>
+            <Link to="about" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50">ABOUT</Link>
+            <Link to="projects" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50">GALLERY</Link>
+            <Link to="contact" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50">CONTACT</Link>
           </div>
         </div>
       </nav>

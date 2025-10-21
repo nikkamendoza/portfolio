@@ -1,7 +1,7 @@
 import React from 'react';
 
 const About: React.FC = () => (
-  <section id="about" className="py-32 sm:py-16 bg-white relative overflow-hidden" style={{ fontFamily: 'Comfortaa, cursive' }}>
+  <section id="about" className="py-32 sm:py-16 bg-white relative overflow-hidden font-comfortaa">
     {/* Multiple Scattered Gray Blobs Background */}
     <div className="absolute inset-0 -z-10">
       <svg width="100%" height="100%" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -49,7 +49,7 @@ const About: React.FC = () => (
               The Artist Behind the Code
             </h3>
             <p className="about-description text-lg text-stone-600 leading-relaxed font-light">
-              I’m a developer with a strong eye for design and a passion for creating digital experiences that are both functional and visually engaging. I approach every project with intention—writing clean code, designing intuitive interfaces, and ensuring every detail contributes to a smooth user experience.
+              I'm a developer with a strong eye for design and a passion for creating digital experiences that are both functional and visually engaging. I approach every project with intention—writing clean code, designing intuitive interfaces, and ensuring every detail contributes to a smooth user experience.
             </p>
           </div>
 
@@ -97,7 +97,7 @@ const About: React.FC = () => (
                 <div className="w-32 h-px bg-stone-400 absolute bottom-4"></div>
               </div>
               <div className="flex flex-col items-center p-6 border border-stone-200 hover:border-yellow-400 transition-colors duration-300 rounded-xl hover:scale-105 transform-gpu relative">
-                <span className="text-4xl mb-2 animate-wiggle">☁️</span>
+                <span className="text-4xl mb-2 animate-pulse">☁️</span>
                 <div className="text-xl font-light text-stone-800 mb-1">Tools</div>
                 <div className="text-sm text-stone-600 font-light mb-6">Figma, Github, Canva</div>
                 <div className="w-32 h-px bg-stone-400 absolute bottom-4"></div>

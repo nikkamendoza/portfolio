@@ -212,12 +212,9 @@ const CreatorGallery: FC = () => {
   return (
     <section
       id="creator-gallery"
+      className="relative min-h-screen overflow-hidden font-comfortaa"
       style={{
-        position: "relative",
-        minHeight: "100vh",
         background: "#8B8078",
-        overflow: "hidden",
-        fontFamily: "Comfortaa, cursive",
       }}
     >
       <style>{floatKeyframes}</style>
@@ -228,16 +225,12 @@ const CreatorGallery: FC = () => {
         .map((item, idx) => (
           <div
             key={`blob-${idx}`}
+            className="absolute flex items-center justify-center z-10"
             style={{
-              position: "absolute",
               width: item.size.width,
               height: item.size.height,
               ...item.style,
-              zIndex: 1,
               filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.10))",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               animation: `${item.anim} ${
                 5.5 + idx * 0.7
               }s ease-in-out infinite`,
@@ -253,16 +246,12 @@ const CreatorGallery: FC = () => {
         .map((item, idx) => (
           <div
             key={`img-${idx}`}
+            className="absolute flex items-center justify-center z-20"
             style={{
-              position: "absolute",
               width: item.size.width,
               height: item.size.height,
               ...item.style,
-              zIndex: 2,
               filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.10))",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               animation: `${item.anim} ${
                 5.5 + (idx + 3) * 0.7
               }s ease-in-out infinite`,
@@ -275,11 +264,10 @@ const CreatorGallery: FC = () => {
               <img
                 src={item.content}
                 alt="gallery object"
+                className="object-cover rounded-3xl"
                 style={{
                   width: item.size.width,
                   height: item.size.height,
-                  objectFit: "cover",
-                  borderRadius: 32,
                   background: "#E2CBAA",
                 }}
               />
@@ -288,18 +276,7 @@ const CreatorGallery: FC = () => {
         ))}
 
       {/* Foreground content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 3,
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "center",
-          paddingLeft: "6vw",
-        }}
-      >
+      <div className="relative z-30 min-h-screen flex flex-col items-start justify-center" style={{ paddingLeft: "6vw" }}>
         {/* ✨ Added LetterCollision here */}
         <LetterCollision />
       </div>
