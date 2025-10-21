@@ -36,7 +36,7 @@ const App: React.FC = () => {
           </Link>
           
           {/* Desktop Menu */}
-          <div className="desktop-nav flex items-center space-x-8">
+          <div className="hidden sm:flex items-center space-x-8">
             <Link to="about" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">ABOUT</Link>
             <Link to="projects" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">GALLERY</Link>
             <Link to="contact" smooth duration={800} className="cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">CONTACT</Link>
