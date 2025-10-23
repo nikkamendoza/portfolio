@@ -6,9 +6,6 @@ import React, {
   useRef,
   MutableRefObject,
 } from "react";
-import nikka1 from "../imgs/nikka1.jpg";
-import nikka2 from "../imgs/nikka2.jpg";
-import nikka3 from "../imgs/nikka3.jpg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -97,7 +94,8 @@ export function LetterCollision() {
           <LetterDisplay word={craft} />
         </div>
       </div>
-      <div className="flex flex-wrap">
+      {/* Hidden sentence3 at the very bottom - only visible during scroll */}
+      <div className="absolute bottom-0 left-0 right-0 flex flex-wrap justify-center" style={{ transform: 'translateY(100vh)' }}>
         <LetterDisplay word={sentence3} />
       </div>
     </div>
@@ -135,23 +133,14 @@ const blobs: ReactElement[] = [
   />,
 ];
 
-const images = [nikka1, nikka2, nikka3];
 
-type FloatingItem =
-  | {
-      type: "blob";
-      content: ReactElement;
-      style: CSSProperties;
-      anim: string;
-      size: { width: number; height: number };
-    }
-  | {
-      type: "image";
-      content: string;
-      style: CSSProperties;
-      anim: string;
-      size: { width: number; height: number };
-    };
+type FloatingItem = {
+  type: "blob";
+  content: ReactElement;
+  style: CSSProperties;
+  anim: string;
+  size: { width: number; height: number };
+};
 
 const floatingItems: FloatingItem[] = [
   {
@@ -162,25 +151,11 @@ const floatingItems: FloatingItem[] = [
     size: { width: 420, height: 350 },
   },
   {
-    type: "image",
-    content: images[0],
-    style: { top: "12%", right: "18%", transform: "rotate(14deg)" },
-    anim: "float2",
-    size: { width: 300, height: 350 },
-  },
-  {
     type: "blob",
     content: blobs[1],
     style: { top: "50%", left: "3%", transform: "rotate(8deg)" },
     anim: "float3",
     size: { width: 400, height: 480 },
-  },
-  {
-    type: "image",
-    content: images[2],
-    style: { bottom: "1%", right: "20%", transform: "rotate(-12deg)" },
-    anim: "float4",
-    size: { width: 300, height: 350 },
   },
   {
     type: "blob",
@@ -189,22 +164,12 @@ const floatingItems: FloatingItem[] = [
     anim: "float5",
     size: { width: 500, height: 420 },
   },
-  {
-    type: "image",
-    content: images[1],
-    style: { bottom: "15%", right: "8%", transform: "rotate(10deg)" },
-    anim: "float6",
-    size: { width: 300, height: 350 },
-  },
 ];
 
 const floatKeyframes = `
 @keyframes float1 { 0%{transform:translateY(0) rotate(-18deg);} 50%{transform:translateY(-24px) rotate(-18deg);} 100%{transform:translateY(0) rotate(-18deg);} }
-@keyframes float2 { 0%{transform:translateY(0) rotate(12deg);} 50%{transform:translateY(18px) rotate(12deg);} 100%{transform:translateY(0) rotate(12deg);} }
 @keyframes float3 { 0%{transform:translateY(0) rotate(8deg);} 50%{transform:translateY(-18px) rotate(8deg);} 100%{transform:translateY(0) rotate(8deg);} }
-@keyframes float4 { 0%{transform:translateY(0) rotate(-10deg);} 50%{transform:translateY(20px) rotate(-10deg);} 100%{transform:translateY(0) rotate(-10deg);} }
 @keyframes float5 { 0%{transform:translateY(0) rotate(-6deg);} 50%{transform:translateY(-16px) rotate(-6deg);} 100%{transform:translateY(0) rotate(-6deg);} }
-@keyframes float6 { 0%{transform:translateY(0) rotate(8deg);} 50%{transform:translateY(22px) rotate(8deg);} 100%{transform:translateY(0) rotate(8deg);} }
 `;
 
 // Main Gallery
@@ -246,42 +211,9 @@ const CreatorGallery: FC = () => {
           </div>
         ))}
 
-      {floatingItems
-        .filter((item) => item.type === "image")
-        .map((item, idx) => (
-          <div
-            key={`img-${idx}`}
-            className="absolute flex items-center justify-center z-20"
-            style={{
-              width: item.size.width,
-              height: item.size.height,
-              ...item.style,
-              filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.10))",
-              animation: `${item.anim} ${
-                5.5 + (idx + 3) * 0.7
-              }s ease-in-out infinite`,
-              animationDelay: `${
-                (idx + 3) * 0.9 + ((idx + 3) % 2 === 0 ? 0.2 : 0.5)
-              }s`,
-            }}
-          >
-            {typeof item.content === "string" ? (
-              <img
-                src={item.content}
-                alt="gallery object"
-                className="object-cover rounded-3xl"
-                style={{
-                  width: item.size.width,
-                  height: item.size.height,
-                  background: "#E2CBAA",
-                }}
-              />
-            ) : null}
-          </div>
-        ))}
 
       {/* Foreground content */}
-      <div className="relative z-30 min-h-screen flex flex-col items-start justify-center" style={{ paddingLeft: "6vw" }}>
+      <div className="absolute bottom-0 left-0 right-0 z-30 flex flex-col items-start justify-end" style={{ paddingLeft: "6vw", paddingBottom: "4rem" }}>
         {/* ✨ Added LetterCollision here */}
         <LetterCollision />
       </div>
