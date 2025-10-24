@@ -9,9 +9,55 @@ import Resume from './components/Resume';
 import { Link } from 'react-scroll';
 import Main from './components/Main';
 
+// Custom hook to detect current section and determine navigation color
+const useNavigationColor = () => {
+  const [isDarkBackground, setIsDarkBackground] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['main', 'about', 'projects', 'contact', 'creator'];
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          const elementBottom = elementTop + rect.height;
+
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            // Dark backgrounds: main, projects (black), creator (dark) - use white text
+            // Light backgrounds: about, contact (white) - use dark text
+            const darkSections = ['main', 'projects', 'creator'];
+            const lightSections = ['about', 'contact'];
+            
+            console.log(`Current section: ${sectionId}, isDark: ${darkSections.includes(sectionId)}`);
+            
+            if (darkSections.includes(sectionId)) {
+              setIsDarkBackground(true);
+            } else if (lightSections.includes(sectionId)) {
+              setIsDarkBackground(false);
+            }
+            break;
+          }
+        }
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return isDarkBackground;
+};
+
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const isDarkBackground = useNavigationColor();
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -40,17 +86,54 @@ const App: React.FC = () => {
             </Link>
             
             {/* Desktop Menu */}
-            <div className="hidden sm:flex items-center space-x-8 text-white">
-              <Link to="about" smooth duration={800} className="cursor-pointer hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">ABOUT</Link>
-              <Link to="projects" smooth duration={800} className="cursor-pointer hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">GALLERY</Link>
-              <Link to="contact" smooth duration={800} className="cursor-pointer hover:text-stone-900 font-bold tracking-wide transition-colors duration-300">CONTACT</Link>
+            <div className={`hidden sm:flex items-center space-x-8 ${isDarkBackground ? 'text-white' : 'text-stone-800'}`}>
+              <Link 
+                to="about" 
+                smooth 
+                duration={800} 
+                className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
+                  isDarkBackground 
+                    ? 'hover:text-stone-300' 
+                    : 'hover:text-stone-600'
+                }`}
+              >
+                ABOUT
+              </Link>
+              <Link 
+                to="projects" 
+                smooth 
+                duration={800} 
+                className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
+                  isDarkBackground 
+                    ? 'hover:text-stone-300' 
+                    : 'hover:text-stone-600'
+                }`}
+              >
+                GALLERY
+              </Link>
+              <Link 
+                to="contact" 
+                smooth 
+                duration={800} 
+                className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
+                  isDarkBackground 
+                    ? 'hover:text-stone-300' 
+                    : 'hover:text-stone-600'
+                }`}
+              >
+                CONTACT
+              </Link>
             </div>
 
             {/* Kebab Menu Button */}
             <div className="sm:hidden">
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                className="text-stone-800 hover:text-stone-600 focus:outline-none"
+                className={`focus:outline-none transition-colors duration-300 ${
+                  isDarkBackground 
+                    ? 'text-white hover:text-stone-300' 
+                    : 'text-stone-800 hover:text-stone-600'
+                }`}
                 aria-label="Toggle menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,15 +144,39 @@ const App: React.FC = () => {
           </div>
 
           {/* Mobile Menu */}
-          <div className={`sm:hidden absolute top-full right-6 w-64 bg-white/98 backdrop-blur-sm rounded-lg shadow-lg p-4 mt-1 transition-all duration-200 ease-out ${
+          <div className={`sm:hidden absolute top-full right-7 w-64 bg-black rounded-lg shadow-lg p-4 transition-all duration-200 ease-out ${
             isMenuOpen 
               ? 'opacity-100 transform translate-y-0 pointer-events-auto' 
               : 'opacity-0 transform -translate-y-2 pointer-events-none'
           }`}>
             <div className="flex flex-col items-center space-y-2">
-              <Link to="about" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50">ABOUT</Link>
-              <Link to="projects" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50">GALLERY</Link>
-              <Link to="contact" smooth duration={800} onClick={closeMenu} className="block w-full text-center cursor-pointer text-stone-600 hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50">CONTACT</Link>
+              <Link 
+                to="about" 
+                smooth 
+                duration={800} 
+                onClick={closeMenu} 
+                className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+              >
+                ABOUT
+              </Link>
+              <Link 
+                to="projects" 
+                smooth 
+                duration={800} 
+                onClick={closeMenu} 
+                className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+              >
+                GALLERY
+              </Link>
+              <Link 
+                to="contact" 
+                smooth 
+                duration={800} 
+                onClick={closeMenu} 
+                className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+              >
+                CONTACT
+              </Link>
             </div>
           </div>
         </nav>

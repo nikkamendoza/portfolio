@@ -176,12 +176,12 @@ const floatKeyframes = `
 const CreatorGallery: FC = () => {
   return (
     <section
-      id="creator-gallery"
+      id="creator"
       className="relative min-h-screen overflow-hidden font-comfortaa"
       style={{
         position: "relative",
         maxHeight: "100vh",
-        background: "#8B8078",
+        background: "#000000",
         fontFamily: "Inter, sans-serif",
         fontWeight: 550,
         letterSpacing: "0.6em",
