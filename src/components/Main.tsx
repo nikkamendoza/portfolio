@@ -12,7 +12,14 @@ import nikka3 from '../imgs/nikka3.jpg';
 
 const Main: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(1); // Start with middle image
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const galleryImages = [nikka1, nikka2, nikka3];
+
+  const handleImageClick = (clickedIndex: number) => {
+    setActiveImageIndex(clickedIndex);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,30 +153,80 @@ const Main: React.FC = () => {
                         </button>
                     </div>
 
-                    {/* Gallery Images - 3 column grid */}
-                    <div className="max-w-7xl mx-auto px-8">
-                        <div className="grid grid-cols-3 gap-12">
-                            <div className="w-72 h-96 bg-gray-800 border border-gray-600 rounded-lg overflow-hidden shadow-lg">
-                                <img
-                                    src={nikka1}
-                                    alt="Gallery image 1"
-                                    className="w-full h-full object-contain"
-                                />
+                    {/* Gallery Carousel */}
+                    <div className="max-w-6xl mx-auto px-4 sm:px-8 relative z-50">
+                        <div className="flex items-center justify-center gap-1 sm:gap-2 md:gap-4 lg:gap-6 relative">
+                            {/* Left Image */}
+                            <div
+                                onClick={() => handleImageClick(activeImageIndex === 0 ? 2 : activeImageIndex - 1)}
+                                className={`
+                                    relative cursor-pointer transition-all duration-700 ease-in-out
+                                    w-24 h-32 sm:w-32 sm:h-40 md:w-40 md:h-48 lg:w-48 lg:h-56 opacity-70 hover:opacity-90 scale-90
+                                    sm:transform sm:-translate-x-2 md:-translate-x-4
+                                `}
+                                style={{ zIndex: 10 }}
+                            >
+                                <div className="w-full h-full bg-gray-800 border-2 border-gray-600 rounded-xl overflow-hidden shadow-2xl">
+                                    <img
+                                        src={galleryImages[activeImageIndex === 0 ? 2 : activeImageIndex - 1]}
+                                        alt="Left gallery image"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 rounded-xl"></div>
                             </div>
-                            <div className="w-72 h-96 bg-gray-800 border border-gray-600 rounded-lg overflow-hidden shadow-lg">
-                                <img
-                                    src={nikka2}
-                                    alt="Gallery image 2"
-                                    className="w-full h-full object-contain"
-                                />
+
+                            {/* Center Image (Active) */}
+                            <div
+                                onClick={() => handleImageClick(activeImageIndex)}
+                                className="relative cursor-pointer transition-all duration-700 ease-in-out w-40 h-48 sm:w-48 sm:h-60 md:w-64 md:h-80 lg:w-80 lg:h-96 z-50 scale-100"
+                                style={{ zIndex: 50 }}
+                            >
+                                <div className="w-full h-full bg-gray-800 border-2 border-gray-600 rounded-xl overflow-hidden shadow-2xl">
+                                    <img
+                                        src={galleryImages[activeImageIndex]}
+                                        alt="Center gallery image"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
-                            <div className="w-72 h-96 bg-gray-800 border border-gray-600 rounded-lg overflow-hidden shadow-lg">
-                                <img
-                                    src={nikka3}
-                                    alt="Gallery image 3"
-                                    className="w-full h-full object-contain"
-                                />
+
+                            {/* Right Image */}
+                            <div
+                                onClick={() => handleImageClick(activeImageIndex === 2 ? 0 : activeImageIndex + 1)}
+                                className={`
+                                    relative cursor-pointer transition-all duration-700 ease-in-out
+                                    w-24 h-32 sm:w-32 sm:h-40 md:w-40 md:h-48 lg:w-48 lg:h-56 opacity-70 hover:opacity-90 scale-90
+                                    sm:transform sm:translate-x-2 md:translate-x-4
+                                `}
+                                style={{ zIndex: 10 }}
+                            >
+                                <div className="w-full h-full bg-gray-800 border-2 border-gray-600 rounded-xl overflow-hidden shadow-2xl">
+                                    <img
+                                        src={galleryImages[activeImageIndex === 2 ? 0 : activeImageIndex + 1]}
+                                        alt="Right gallery image"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 rounded-xl"></div>
                             </div>
+                        </div>
+                        
+                        {/* Navigation dots */}
+                        <div className="flex justify-center mt-8 sm:mt-12 gap-3 relative z-50">
+                            {galleryImages.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleImageClick(index)}
+                                    className={`
+                                        w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 border-2
+                                        ${index === activeImageIndex 
+                                            ? 'bg-white scale-125 border-white' 
+                                            : 'bg-gray-400 border-gray-400 hover:border-gray-300 hover:bg-gray-300'
+                                        }
+                                    `}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
