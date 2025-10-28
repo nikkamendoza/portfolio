@@ -12,11 +12,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // Text parts
-const creativity = "Imagination  ";
-const is = "is ";
-const my = "my ";
-const craft = "tool.";
-const sentence3 = "Nikka Joie Sanchez Mendoza";
+const text1 = "Imagination  ";
+const text2 = "is ";
+const text3 = "my ";
+const text4 = "tool.";
+const text5 = "Nikka Joie Sanchez Mendoza";
 
 // Utility for animation
 function getRandomSpeed() {
@@ -82,21 +82,21 @@ export function LetterCollision() {
 
   return (
     <div ref={containerRef} className="scroll-smooth">
-      <div className="mt-24 flex flex-col justify-end">
-        <div className="flex flex-wrap">
-          <LetterDisplay word={creativity} />
+      <div className="mt-24 flex flex-col items-center justify-end">
+        <div className="flex flex-wrap w-full justify-center">
+          <LetterDisplay word={text1} />
         </div>
-        <div className="flex flex-wrap">
-          <LetterDisplay word={is} />
+        <div className="flex flex-wrap w-full justify-center">
+          <LetterDisplay word={text2} />
           <div className="w-2 xs:w-4 sm:w-10"></div>
-          <LetterDisplay word={my} />
+          <LetterDisplay word={text3} />
           <div className="w-2 xs:w-4 sm:w-10"></div>
-          <LetterDisplay word={craft} />
+          <LetterDisplay word={text4} />
         </div>
       </div>
       {/* Hidden sentence3 at the very bottom - only visible during scroll */}
       <div className="absolute bottom-0 left-0 right-0 flex flex-wrap justify-center" style={{ transform: 'translateY(100vh)' }}>
-        <LetterDisplay word={sentence3} />
+        <LetterDisplay word={text5} />
       </div>
     </div>
   );
@@ -179,7 +179,7 @@ const CreatorGallery: FC = () => {
       className="relative min-h-screen overflow font-comfortaa"
       style={{
         position: "relative",
-        maxHeight: "100vh",
+        minHeight: "100vh",
         background: "#000000",
         fontFamily: "Inter, sans-serif",
         fontWeight: 550,
@@ -212,7 +212,7 @@ const CreatorGallery: FC = () => {
 
 
       {/* Foreground content */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 flex flex-col items-start justify-end" style={{ paddingLeft: "6vw", paddingBottom: "4rem" }}>
+      <div className="absolute bottom-0 left-0 right-0 z-30 flex flex-col items-center justify-end" style={{ paddingBottom: "4rem" }}>
         {/* ✨ Added LetterCollision here */}
         <LetterCollision />
       </div>
