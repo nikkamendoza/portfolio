@@ -28,9 +28,29 @@ function getRandomRotation() {
   return Math.random() * 60 - 30; // -30 to 30 degrees
 }
 
+function getRandomPastelColor(): string {
+  const hue = Math.floor(Math.random() * 360); // any hue
+  const saturation = 60 + Math.random() * 15; // 60% - 75%
+  const lightness = 88 + Math.random() * 8; // 88% - 96% very light
+  return `hsl(${hue} ${saturation}% ${lightness}%)`;
+}
+
 const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   const lettersContainer = containerRef.current;
   const letterElements = lettersContainer?.querySelectorAll(".letter");
+
+  // Assign very light pastel colors on first scroll
+  ScrollTrigger.create({
+    trigger: document.documentElement,
+    start: 0,
+    once: true,
+    onEnter: () => {
+      letterElements?.forEach((letter: Element) => {
+        const el = letter as HTMLElement;
+        gsap.to(el, { color: getRandomPastelColor(), opacity: 0.7, duration: 0.6, ease: "power1.out" });
+      });
+    },
+  });
 
   letterElements?.forEach((letter: Element) => {
     const el = letter as HTMLElement;
