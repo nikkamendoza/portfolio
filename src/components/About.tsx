@@ -1,7 +1,7 @@
 import React from 'react';
 
 const About: React.FC = () => (
-  <section id="about" className="py-32 sm:py-16 bg-white relative overflow-hidden font-comfortaa">
+  <section className="py-32 sm:py-16 bg-white relative overflow-hidden font-comfortaa min-h-screen">
     {/* Multiple Scattered Gray Blobs Background */}
     <div className="absolute inset-0 -z-10">
       <svg width="100%" height="100%" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">

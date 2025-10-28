@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import CreatorGallery from './CreatorGallery';
 
 // Project thumbnails
 import phishermenImage from '../imgs/phishermen.png';
@@ -279,7 +280,10 @@ const Projects: React.FC = () => {
   }, [selectedProject, currentPage, totalPages, previewImageIndex]);
 
   return (
-    <div className="projects-and-featured-wrapper">
+    <div className="projects-and-featured-wrapper min-h-screen">
+      {/* Creator Gallery Section - Now First */}
+      <CreatorGallery />
+
       <div className="projects-bg-art">
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>
@@ -291,8 +295,8 @@ const Projects: React.FC = () => {
 
       <section
         ref={sectionRef}
-        id="projects"
         className="projects-section"
+        style={{ position: 'relative', zIndex: 50 }}
       >
         <div className="projects-container">
           <div className="projects-header">
@@ -551,7 +555,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Featured Section */}
-      <section className="featured-section">
+      <section className="featured-section" style={{ position: 'relative', zIndex: 50 }}>
         <div className="featured-container artistic" style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2rem', justifyContent: 'center'}}>
             <div className="featured-video-card-v2">
               <iframe

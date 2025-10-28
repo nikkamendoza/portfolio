@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Contact: React.FC = () => (
-  <section id="contact" className="py-32 bg-white relative overflow-hidden font-comfortaa">
+  <section className="py-32 bg-white relative overflow-hidden font-comfortaa min-h-screen">
     {/* Artistic Background Elements */}
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute top-10 left-10 w-40 h-40 border border-stone-200 rotate-45 opacity-20"></div>
