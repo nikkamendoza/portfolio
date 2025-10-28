@@ -1,6 +1,10 @@
-# Interactive Portfolio
+# Interactive Portfolio (Frontend + Email Backend)
 
-A modern, interactive portfolio website built with React, TypeScript, and CSS animations.
+A modern, interactive portfolio built with React + TypeScript and a small Node.js backend to power the Contact form (sends real emails).
+
+Folders:
+- Frontend: `src/`
+- Backend: `server/`
 
 ## Features
 
@@ -34,19 +38,79 @@ A modern, interactive portfolio website built with React, TypeScript, and CSS an
 - **Intersection Observer API** for scroll animations
 - **Responsive Design** with mobile-first approach
 
-## Getting Started
+## Getting Started (Step-by-step)
 
-1. Install dependencies:
+Follow these steps in order. Take your time, each step is simple.
+
+### 1) Install everything
+
+Open a terminal in the project folder and run:
+
+```bash
+npm run install-all
+```
+
+This installs dependencies for both the frontend and the backend.
+
+### 2) Create your backend environment file
+
+Do NOT share this file. It contains secrets. A safe example file exists at `server/env.example`.
+
+Steps:
+1. Open a new terminal and go to the server folder:
    ```bash
-   npm install
+   cd server
    ```
-
-2. Start the development server:
+2. Copy the example file to create your real env file:
    ```bash
-   npm start
+   cp env.example .env
    ```
+3. Open `.env` in an editor and fill in the values (use your Gmail and a Gmail App Password). Never commit this file.
 
-3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Note: `.env` is already ignored by Git.
+
+### 3) Run the backend
+
+In the server folder terminal, start the backend in dev mode:
+
+```bash
+npm run dev
+```
+
+You should see a message that the server is running on `http://localhost:5000`.
+
+Health check: open this in your browser and confirm you see JSON:
+
+```
+http://localhost:5000/api/health
+```
+
+### 4) Run the frontend
+
+Open another terminal in the project root (not inside `server`) and run:
+
+```bash
+npm start
+```
+
+Then open the site at:
+
+```
+http://localhost:3000
+```
+
+Optional: You can also run both together from the root with:
+
+```bash
+npm run dev
+```
+
+### 5) Test the Contact form
+
+1. Go to the Contact section
+2. Fill in Name, Email, and Message
+3. Click Send
+4. You should receive an email at your Gmail, and the sender gets a confirmation email
 
 ## Project Structure
 
@@ -59,6 +123,16 @@ src/
 │   └── Contact.tsx       # Contact form
 ├── App.tsx               # Main app with state management
 └── index.css             # Custom CSS utilities and animations
+```
+
+Backend files:
+
+```
+server/
+├── server.js             # Express server (email sending, CORS, rate limit)
+├── package.json          # Backend scripts and dependencies
+├── env.example           # Template for your private .env
+└── README.md             # Backend-specific docs
 ```
 
 ## Key Features Explained
@@ -105,6 +179,11 @@ const projects = [
 - Animation timings can be adjusted in the CSS classes
 - Background elements can be modified in the Projects component
 
+### Backend configuration
+- Allowed frontend origins are controlled by `FRONTEND_URL` in your `.env`
+- Email sending uses your Gmail + App Password (set in `.env`)
+- Rate limiting prevents spam (5 requests per 15 minutes)
+
 ## Browser Support
 
 - Modern browsers with CSS Grid and Flexbox support
@@ -117,3 +196,23 @@ const projects = [
 - CSS animations for smooth performance
 - Lazy loading of project images
 - Efficient state management with React hooks
+
+## Troubleshooting (Common issues)
+
+- Network error when submitting the form
+  - Make sure the backend is running: `cd server && npm run dev`
+  - Check `http://localhost:5000/api/health` in your browser
+  - Ensure the `.env` exists in `server/` and is filled with correct values
+  - Keep the frontend at `http://localhost:3000` (default)
+
+- Email failed to send
+  - Use a Gmail App Password (not your normal password)
+  - In Google Account → Security, enable 2‑Step Verification, then create an App Password for Mail
+  - Verify `GMAIL_USER` matches your Gmail address
+
+- CORS error in the browser console
+  - Set `FRONTEND_URL=http://localhost:3000` in `server/.env`
+  - Restart the backend after changing `.env`
+
+- Too many requests
+  - Rate limit is 5 requests per 15 minutes per IP. Wait or restart the backend.
