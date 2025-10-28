@@ -47,7 +47,7 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed z-50 w-full backdrop-blur-sm g-gradient-to-b from-black/80 to-primary-950/0" ref={navRef}>
+    <nav className="fixed w-full backdrop-blur-sm g-gradient-to-b from-black/80 to-primary-950/0" ref={navRef} style={{ zIndex: 100 }}>
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         <Link to="/" onClick={closeMenu} className="logo-container">
           <div className="logo">
