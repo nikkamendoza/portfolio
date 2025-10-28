@@ -30,8 +30,24 @@ const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const isDarkBackground = useNavigationColor();
+  const location = useLocation();
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  const scrollToTop = () => {
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch {
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const handleNavClick = () => {
+    scrollToTop();
+    closeMenu();
+  };
+
+  const isActive = (path: string) => location.pathname === path;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -57,33 +73,45 @@ const Navigation: React.FC = () => {
         
         {/* Desktop Menu */}
         <div className={`hidden sm:flex items-center space-x-8 ${isDarkBackground ? 'text-white' : 'text-stone-800'}`}>
+          <Link
+            to="/"
+            onClick={handleNavClick}
+            className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
+              isDarkBackground ? 'hover:text-stone-300' : 'hover:text-stone-600'
+            } ${isActive('/') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
+          >
+            HOME
+          </Link>
           <Link 
             to="/about" 
+            onClick={handleNavClick}
             className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
               isDarkBackground 
                 ? 'hover:text-stone-300' 
                 : 'hover:text-stone-600'
-            }`}
+            } ${isActive('/about') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             ABOUT
           </Link>
           <Link 
             to="/gallery" 
+            onClick={handleNavClick}
             className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
               isDarkBackground 
                 ? 'hover:text-stone-300' 
                 : 'hover:text-stone-600'
-            }`}
+            } ${isActive('/gallery') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             GALLERY
           </Link>
           <Link 
             to="/contact" 
+            onClick={handleNavClick}
             className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
               isDarkBackground 
                 ? 'hover:text-stone-300' 
                 : 'hover:text-stone-600'
-            }`}
+            } ${isActive('/contact') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             CONTACT
           </Link>
@@ -115,23 +143,30 @@ const Navigation: React.FC = () => {
       }`}>
         <div className="flex flex-col items-center space-y-2">
           <Link 
+            to="/" 
+            onClick={handleNavClick} 
+            className={`block w-full text-center cursor-pointer text-white font-bold tracking-wide transition-colors duration-300 py-2 rounded-md ${isActive('/') ? 'bg-white/10' : 'hover:bg-stone-50 hover:text-stone-900'}`}
+          >
+            HOME
+          </Link>
+          <Link 
             to="/about" 
-            onClick={closeMenu} 
-            className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+            onClick={handleNavClick} 
+            className={`block w-full text-center cursor-pointer text-white font-bold tracking-wide transition-colors duration-300 py-2 rounded-md ${isActive('/about') ? 'bg-white/10' : 'hover:bg-stone-50 hover:text-stone-900'}`}
           >
             ABOUT
           </Link>
           <Link 
             to="/gallery" 
-            onClick={closeMenu} 
-            className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+            onClick={handleNavClick} 
+            className={`block w-full text-center cursor-pointer text-white font-bold tracking-wide transition-colors duration-300 py-2 rounded-md ${isActive('/gallery') ? 'bg-white/10' : 'hover:bg-stone-50 hover:text-stone-900'}`}
           >
             GALLERY
           </Link>
           <Link 
             to="/contact" 
-            onClick={closeMenu} 
-            className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+            onClick={handleNavClick} 
+            className={`block w-full text-center cursor-pointer text-white font-bold tracking-wide transition-colors duration-300 py-2 rounded-md ${isActive('/contact') ? 'bg-white/10' : 'hover:bg-stone-50 hover:text-stone-900'}`}
           >
             CONTACT
           </Link>

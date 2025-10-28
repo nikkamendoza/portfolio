@@ -3,7 +3,7 @@ import React from 'react';
 const About: React.FC = () => (
   <section className="py-32 sm:py-16 bg-white relative overflow-hidden font-comfortaa min-h-screen">
     {/* Multiple Scattered Gray Blobs Background */}
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 z-0 pointer-events-none">
       <svg width="100%" height="100%" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
         <defs>
           <linearGradient id="blob1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -17,7 +17,7 @@ const About: React.FC = () => (
         </defs>
 
         {/* Blob 1 - Upper Left Corner (Aesthetic Organic Shape) */}
-        <path fill="url(#blob1)" fillOpacity="0.08" d="M-220,100Q-165,45,-110,150Q-55,255,0,110Q55,-35,110,130Q165,295,220,90Q165,-15,110,170Q55,355,0,190Q-55,25,-110,210Q-165,395,-220,150Q-165,5,-220,100Z">
+        <path fill="url(#blob1)" fillOpacity="0.18" d="M-220,100Q-165,45,-110,150Q-55,255,0,110Q55,-35,110,130Q165,295,220,90Q165,-15,110,170Q55,355,0,190Q-55,25,-110,210Q-165,395,-220,150Q-165,5,-220,100Z">
           <animate attributeName="d" dur="8s" repeatCount="indefinite"
             values="M-220,100Q-165,45,-110,150Q-55,255,0,110Q55,-35,110,130Q165,295,220,90Q165,-15,110,170Q55,355,0,190Q-55,25,-110,210Q-165,395,-220,150Q-165,5,-220,100Z;
                     M-220,150Q-165,95,-110,200Q-55,305,0,160Q55,15,110,180Q165,345,220,140Q165,30,110,220Q55,405,0,240Q-55,75,-110,260Q-165,445,-220,200Q-165,55,-220,150Z;
@@ -25,7 +25,7 @@ const About: React.FC = () => (
         </path>
 
         {/* Blob 2 - Lower Right Corner (Aesthetic Flowing Shape) */}
-        <path fill="url(#blob2)" fillOpacity="0.12" d="M600,400Q800,300,900,500Q1000,700,800,700Q600,700,500,500Q400,300,600,400Z">
+        <path fill="url(#blob2)" fillOpacity="0.20" d="M600,400Q800,300,900,500Q1000,700,800,700Q600,700,500,500Q400,300,600,400Z">
           <animate attributeName="d" dur="10s" repeatCount="indefinite"
             values="M600,400Q800,300,900,500Q1000,700,800,700Q600,700,500,500Q400,300,600,400Z;
                     M600,450Q800,350,900,550Q1000,750,800,750Q600,750,500,550Q400,350,600,450Z;
@@ -73,7 +73,7 @@ const About: React.FC = () => (
 
           {/* Signature */}
           <div className="mt-10">
-            <span className="block text-3xl font-signature text-stone-700 tracking-widest">— Nikka Joie</span>
+            <span className="block text-sm font-signature text-stone-700 tracking-widest">— Nikka Joie</span>
           </div>
         </div>
 
@@ -83,23 +83,23 @@ const About: React.FC = () => (
             <h3 className="text-2xl font-light text-stone-800 tracking-wide mb-8 text-center">
               Technical palette
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex flex-col items-center p-6 border border-stone-200 hover:border-blue-400 transition-colors duration-300 rounded-xl hover:scale-105 transform-gpu relative">
+            <div className="grid grid-cols-1 gap-6">
+              <div className="flex flex-col items-center p-6 rounded-xl hover:scale-105 transform-gpu relative transition-transform duration-300">
                 <span className="text-4xl mb-2 animate-bounce">💻</span>
                 <div className="text-xl font-light text-stone-800 mb-1">Frontend</div>
                 <div className="text-sm text-stone-600 font-light mb-6">React, Vue, TypeScript, Tailwind CSS, JavaScript, HTML, CSS</div>
                 <div className="w-32 h-px bg-stone-400 absolute bottom-4"></div>
               </div>
-              <div className="flex flex-col items-center p-6 border border-stone-200 hover:border-pink-400 transition-colors duration-300 rounded-xl hover:scale-105 transform-gpu relative">
+              <div className="flex flex-col items-center p-6 rounded-xl hover:scale-105 transform-gpu relative transition-transform duration-300">
                 <span className="text-4xl mb-2 animate-pulse">🎨</span>
                 <div className="text-xl font-light text-stone-800 mb-1">Design</div>
-                <div className="text-sm text-stone-600 font-light mb-6">UI/UX, Prototyping, Mockups</div>
+                <div className="text-sm text-stone-600 font-light mb-6">Prototype, Mockups, Wireframes</div>
                 <div className="w-32 h-px bg-stone-400 absolute bottom-4"></div>
               </div>
-              <div className="flex flex-col items-center p-6 border border-stone-200 hover:border-yellow-400 transition-colors duration-300 rounded-xl hover:scale-105 transform-gpu relative">
+              <div className="flex flex-col items-center p-6 rounded-xl hover:scale-105 transform-gpu relative transition-transform duration-300">
                 <span className="text-4xl mb-2 animate-pulse">☁️</span>
                 <div className="text-xl font-light text-stone-800 mb-1">Tools</div>
-                <div className="text-sm text-stone-600 font-light mb-6">Figma, Github, Canva</div>
+                <div className="text-sm text-stone-600 font-light mb-6">Figma, Github, Canva, Photoshop</div>
                 <div className="w-32 h-px bg-stone-400 absolute bottom-4"></div>
               </div>
             </div>
