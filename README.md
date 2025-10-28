@@ -95,7 +95,7 @@ const projects = [
     image: 'image-url',
     link: 'project-link',
     technologies: ['React', 'Node.js'],
-    category: 'Web App'
+    category: 'Desktop App'
   }
 ];
 ```

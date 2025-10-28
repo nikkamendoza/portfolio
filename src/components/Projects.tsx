@@ -61,7 +61,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'Ratatutor',
-    description: 'RataTutor is an AI-powered study assistant web app that transforms student notes into flashcards, summaries, and quizzes. It features document processing, user authentication, and responsive design for personalized learning.',
+    description: 'RataTutor is an AI-powered study assistant desktop app that transforms student notes into flashcards, summaries, and quizzes. It features document processing, user authentication, and responsive design for personalized learning.',
     image: ratatutorImage,
     gallery: [rata1, rata2, rata3, rata4, rata5],
     link: 'https://ratatutor.onrender.com',
@@ -132,7 +132,7 @@ const projects: Project[] = [
     gallery: [honey1],
     link: '#',
     technologies: ['Java', 'NetBeans'],
-    category: 'Web App',
+    category: 'Desktop App',
     featured: true,
     role: 'UI/UX Designer, Frontend Developer'
   },
@@ -143,7 +143,7 @@ const projects: Project[] = [
     gallery: [sisiw1],
     link: '#',
     technologies: ['Java', 'NetBeans'],
-    category: 'Web App',
+    category: 'Desktop App',
     featured: true,
     role: 'UI/UX Designer, Frontend Developer'
   },
@@ -166,6 +166,8 @@ const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [previewImageIndex, setPreviewImageIndex] = useState<number | null>(null);
+  const [loadingImages, setLoadingImages] = useState<Set<number>>(new Set());
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
 
   // Determine number of pages (2 for most, 3 for ExerGuide AR)
   const isAR = selectedProject?.title === 'ExerGuide AR';
@@ -194,6 +196,32 @@ const Projects: React.FC = () => {
     setPreviewImageIndex(null);
   };
 
+  const handleImageLoad = (index: number) => {
+    setLoadingImages(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(index);
+      return newSet;
+    });
+  };
+
+  const handleImageError = (index: number) => {
+    setLoadingImages(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(index);
+      return newSet;
+    });
+    setImageErrors(prev => new Set(prev).add(index));
+  };
+
+  const handleImageStartLoad = (index: number) => {
+    setLoadingImages(prev => new Set(prev).add(index));
+    setImageErrors(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(index);
+      return newSet;
+    });
+  };
+
   const handleNextImage = () => {
     if (selectedProject && previewImageIndex !== null) {
       setPreviewImageIndex((previewImageIndex + 1) % selectedProject.gallery.length);
@@ -205,6 +233,50 @@ const Projects: React.FC = () => {
       setPreviewImageIndex((previewImageIndex - 1 + selectedProject.gallery.length) % selectedProject.gallery.length);
     }
   };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!selectedProject) return;
+
+      switch (event.key) {
+        case 'Escape':
+          if (previewImageIndex !== null) {
+            closeImagePreview();
+          } else {
+            closeModal();
+          }
+          break;
+        case 'ArrowLeft':
+          if (previewImageIndex !== null) {
+            handlePrevImage();
+          } else if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+          }
+          break;
+        case 'ArrowRight':
+          if (previewImageIndex !== null) {
+            handleNextImage();
+          } else if (currentPage < totalPages - 1) {
+            setCurrentPage(currentPage + 1);
+          }
+          break;
+        case 'ArrowUp':
+          if (previewImageIndex !== null) {
+            handlePrevImage();
+          }
+          break;
+        case 'ArrowDown':
+          if (previewImageIndex !== null) {
+            handleNextImage();
+          }
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject, currentPage, totalPages, previewImageIndex]);
 
   return (
     <div className="projects-and-featured-wrapper">
@@ -307,43 +379,49 @@ const Projects: React.FC = () => {
 
               <div className="modal-page-container">
                 <div className={`modal-page ${currentPage === 0 ? 'visible' : ''}`}> {/* Frontpage */}
-                  <span className="modal-project-category">{selectedProject.category}</span>
-                  <h2 className="modal-project-title">{selectedProject.title}</h2>
-                  <div style={{ margin: '0 0 0.5rem 0', display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
-                    <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-website-link modal-link-small">
-                      <span>{selectedProject.title === 'Uppa' ? 'Visit Design' : selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
-                      <svg style={{marginLeft: '0.3em', width: '1.1em', height: '1.1em', verticalAlign: 'middle', opacity: 0.8}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="2" />
-                        <path d="M10 14L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M15 4h5v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                    {selectedProject.title === 'ExerGuide AR' && (
-                      <a href="https://drive.google.com/drive/u/0/folders/1xQN5uzOku0qNGzQwqFNX_hSV_-TypQfD" target="_blank" rel="noopener noreferrer" className="modal-website-link modal-link-small">
-                        <span>APK Link</span>
-                        <svg style={{marginLeft: '0.3em', width: '1.1em', height: '1.1em', verticalAlign: 'middle', opacity: 0.8}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  {/* Fixed Header Content */}
+                  <div className="modal-header-content">
+                    <span className="modal-project-category">{selectedProject.category}</span>
+                    <h2 className="modal-project-title">{selectedProject.title}</h2>
+                    <div style={{ margin: '0 0 0.5rem 0', display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
+                      <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-website-link modal-link-small">
+                        <span>{selectedProject.title === 'Uppa' ? 'Visit Design' : selectedProject.title === 'ExerGuide AR' ? 'GitHub Link' : 'Visit Website'}</span>
+                        <svg style={{width: '1.1em', height: '1.1em', verticalAlign: 'middle', opacity: 0.8}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="2" />
                           <path d="M10 14L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           <path d="M15 4h5v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </a>
-                    )}
-                  </div>
-                  <div className="modal-divider"></div>
-                  <p className="modal-project-description">{selectedProject.description}</p>
-                  <div className="modal-role-section">
-                    <span className="modal-role-title">Role</span>
-                    <div className="modal-tag-list">
-                      {selectedProject.role.split(',').map(role => (
-                        <span key={role.trim()} className="modal-tag">{role.trim()}</span>
-                      ))}
+                      {selectedProject.title === 'ExerGuide AR' && (
+                        <a href="https://drive.google.com/drive/u/0/folders/1xQN5uzOku0qNGzQwqFNX_hSV_-TypQfD" target="_blank" rel="noopener noreferrer" className="modal-website-link modal-link-small">
+                          <span>APK Link</span>
+                          <svg style={{width: '1.1em', height: '1.1em', verticalAlign: 'middle', opacity: 0.8}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="2" />
+                            <path d="M10 14L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M15 4h5v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      )}
                     </div>
                   </div>
-                  <h4 className="modal-tech-title">Technologies Used</h4>
-                  <div className="modal-tag-list">
-                    {selectedProject.technologies.map(tech => (
-                      <span key={tech} className="modal-tag">{tech}</span>
-                    ))}
+
+                  {/* Scrollable Content */}
+                  <div className="modal-scrollable-content">
+                    <p className="modal-project-description">{selectedProject.description}</p>
+                    <div className="modal-role-section">
+                      <span className="modal-role-title">Role</span>
+                      <div className="modal-tag-list">
+                        {selectedProject.role.split(',').map(role => (
+                          <span key={role.trim()} className="modal-tag">{role.trim()}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <h4 className="modal-tech-title">Technologies Used</h4>
+                    <div className="modal-tag-list">
+                      {selectedProject.technologies.map(tech => (
+                        <span key={tech} className="modal-tag">{tech}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -353,13 +431,55 @@ const Projects: React.FC = () => {
                     <div className="modal-image-grid">
                       {selectedProject.gallery.map((img, index) => (
                         <div key={index} className="modal-image-container" onClick={() => handleImageClick(index)}>
-                          <img src={img} alt={`${selectedProject.title} gallery image ${index + 1}`} className="modal-gallery-image" />
+                          {loadingImages.has(index) && (
+                            <div className="image-loading-spinner">
+                              <div className="spinner"></div>
+                            </div>
+                          )}
+                          {imageErrors.has(index) ? (
+                            <div className="image-error-placeholder">
+                              <svg width="2rem" height="2rem" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                              </svg>
+                              <span>Failed to load</span>
+                            </div>
+                          ) : (
+                            <img 
+                              src={img} 
+                              alt={`${selectedProject.title} gallery image ${index + 1}`} 
+                              className="modal-gallery-image"
+                              onLoadStart={() => handleImageStartLoad(index)}
+                              onLoad={() => handleImageLoad(index)}
+                              onError={() => handleImageError(index)}
+                            />
+                          )}
                         </div>
                       ))}
                     </div>
                   ) : (
                     <div className="modal-single-image-container" onClick={() => handleImageClick(0)}>
-                      <img src={selectedProject.gallery[0]} alt={`${selectedProject.title} gallery image 1`} className="modal-single-image" />
+                      {loadingImages.has(0) && (
+                        <div className="image-loading-spinner">
+                          <div className="spinner"></div>
+                        </div>
+                      )}
+                      {imageErrors.has(0) ? (
+                        <div className="image-error-placeholder">
+                          <svg width="3rem" height="3rem" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                          </svg>
+                          <span>Failed to load</span>
+                        </div>
+                      ) : (
+                        <img 
+                          src={selectedProject.gallery[0]} 
+                          alt={`${selectedProject.title} gallery image 1`} 
+                          className="modal-single-image"
+                          onLoadStart={() => handleImageStartLoad(0)}
+                          onLoad={() => handleImageLoad(0)}
+                          onError={() => handleImageError(0)}
+                        />
+                      )}
                     </div>
                   )}
                 </div>

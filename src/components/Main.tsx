@@ -75,7 +75,7 @@ const Main: React.FC = () => {
                 <div className="hero-content">
                     {/* Main Content */}
                     <div className="relative z-10 max-w-4xl mx-auto mt-[100px]">
-                        <h2 className="text-4xl md:text-6xl font-light text-white tracking-wide mb-6 hero-title font-comfortaa">
+                        <h2 className="text-4xl md:text-6xl font-bold text-white tracking-wide mb-6 hero-title">
                             NIKKA MENDOZA
                         </h2>
                         <p className="text-lg md:text-xl text-white mb-12 font-light leading-relaxed max-w-2xl mx-auto">
