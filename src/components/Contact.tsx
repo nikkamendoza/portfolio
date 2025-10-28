@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
+  const apiBaseUrl =
+    process.env.REACT_APP_API_BASE || (window.location.hostname === 'localhost' ? 'http://localhost:5000' : '');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,7 +28,7 @@ const Contact: React.FC = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

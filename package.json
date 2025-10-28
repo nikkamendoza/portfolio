@@ -21,7 +21,8 @@
     "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "nodemailer": "^6.9.15"
   },
   "scripts": {
     "start": "react-scripts start",
