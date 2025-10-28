@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import CreatorGallery from './components/CreatorGallery';
 import Contact from './components/Contact';
 import Resume from './components/Resume';
+import Landing from './components/Landing';
 import { Link } from 'react-scroll';
 import Main from './components/Main';
 
@@ -123,6 +124,16 @@ const App: React.FC = () => {
               >
                 CONTACT
               </Link>
+              <Link 
+                to="/landing" 
+                className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
+                  isDarkBackground 
+                    ? 'hover:text-stone-300' 
+                    : 'hover:text-stone-600'
+                }`}
+              >
+                LANDING 2.0
+              </Link>
             </div>
 
             {/* Kebab Menu Button */}
@@ -177,6 +188,13 @@ const App: React.FC = () => {
               >
                 CONTACT
               </Link>
+              <Link 
+                to="/landing" 
+                onClick={closeMenu} 
+                className="block w-full text-center cursor-pointer text-white hover:text-stone-900 font-bold tracking-wide transition-colors duration-300 py-2 rounded-md hover:bg-stone-50"
+              >
+                LANDING 2.0
+              </Link>
             </div>
           </div>
         </nav>
@@ -192,6 +210,7 @@ const App: React.FC = () => {
             </main>
           } />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/landing" element={<Landing />} />
         </Routes>
       </div>
     </Router>
