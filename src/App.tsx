@@ -78,7 +78,7 @@ const Navigation: React.FC = () => {
             onClick={handleNavClick}
             className={`cursor-pointer font-bold tracking-wide transition-colors duration-300 ${
               isDarkBackground ? 'hover:text-stone-300' : 'hover:text-stone-600'
-            } ${isActive('/') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
+            } ${isActive('/') ? 'border-b-2 border-current opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             HOME
           </Link>
@@ -89,7 +89,7 @@ const Navigation: React.FC = () => {
               isDarkBackground 
                 ? 'hover:text-stone-300' 
                 : 'hover:text-stone-600'
-            } ${isActive('/about') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
+            } ${isActive('/about') ? 'border-b-2 border-current opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             ABOUT
           </Link>
@@ -100,7 +100,7 @@ const Navigation: React.FC = () => {
               isDarkBackground 
                 ? 'hover:text-stone-300' 
                 : 'hover:text-stone-600'
-            } ${isActive('/gallery') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
+            } ${isActive('/gallery') ? 'border-b-2 border-current opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             GALLERY
           </Link>
@@ -111,7 +111,7 @@ const Navigation: React.FC = () => {
               isDarkBackground 
                 ? 'hover:text-stone-300' 
                 : 'hover:text-stone-600'
-            } ${isActive('/contact') ? 'border-b-2 border-current pb-1 opacity-100' : 'opacity-70 hover:opacity-100'}`}
+            } ${isActive('/contact') ? 'border-b-2 border-current opacity-100' : 'opacity-70 hover:opacity-100'}`}
           >
             CONTACT
           </Link>
