@@ -138,7 +138,7 @@ server/
 ## Key Features Explained
 
 ### Progressive Disclosure
-The portfolio starts with only Hero, About, and Contact sections visible. The Projects section appears dynamically when users click "View More", creating an engaging discovery experience.
+The portfolio initially displays the Hero, About, Projects, and Contact sections. The downloadable résumé appears dynamically as users scroll, creating an engaging and interactive discovery experience.
 
 ### Parallax Animations
 Floating background elements with different colors and timing create depth and visual interest without being distracting.
