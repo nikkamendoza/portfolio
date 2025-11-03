@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import CreatorGallery from './CreatorGallery';
 
 // Project thumbnails
@@ -367,7 +368,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
 
-        {selectedProject && (
+        {selectedProject && createPortal(
           <div
             className="modal-backdrop"
             onClick={closeModal}
@@ -526,10 +527,11 @@ const Projects: React.FC = () => {
                   </button>
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
 
-        {previewImageIndex !== null && selectedProject && (
+        {previewImageIndex !== null && selectedProject && createPortal(
           <div className="image-preview-backdrop" onClick={closeImagePreview}>
             <button className="image-preview-close" onClick={closeImagePreview} aria-label="Close">
               <svg className="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -550,7 +552,8 @@ const Projects: React.FC = () => {
             <button className="image-preview-nav next" aria-label="Next image" onClick={(e) => { e.stopPropagation(); handleNextImage(); }}>
               <svg width="2em" height="2em" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </button>
-          </div>
+          </div>,
+          document.body
         )}
       </section>
 

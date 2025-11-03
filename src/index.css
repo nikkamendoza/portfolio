@@ -522,7 +522,7 @@ a {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(12px);
-  z-index: 50;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -918,7 +918,7 @@ button {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(16px);
-  z-index: 100;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
