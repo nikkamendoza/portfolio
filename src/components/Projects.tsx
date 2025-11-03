@@ -555,7 +555,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Featured Section */}
-      <section className="featured-section" style={{ position: 'relative', zIndex: 50 }}>
+      <section className="featured-section" style={{ position: 'relative' }}>
         <div className="featured-container artistic" style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2rem', justifyContent: 'center'}}>
             <div className="featured-video-card-v2">
               <iframe
